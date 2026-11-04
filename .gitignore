@@ -1,0 +1,14 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Local runtime state / checkpoints
+project_typer_progress.json
+
+# Environment / IDE
+.vscode/
+.idea/
+venv/
+.venv/
