@@ -1,0 +1,4411 @@
+{
+  "recorded_at": "2026-11-01T00:42:58.981197",
+  "keyboard_events": [
+    {
+      "timestamp": 13.80651189998025,
+      "event": "press",
+      "key": "r",
+      "raw": "'r'"
+    },
+    {
+      "timestamp": 13.854272499971557,
+      "event": "release",
+      "key": "r",
+      "raw": "'r'"
+    },
+    {
+      "timestamp": 14.092636100016534,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 14.12732239998877,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 14.14284799998859,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 14.19543209997937,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 14.254442000004929,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 14.255833300005179,
+      "event": "press",
+      "key": "g",
+      "raw": "'g'"
+    },
+    {
+      "timestamp": 14.305055500008166,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 14.328232100000605,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 14.353543300007004,
+      "event": "release",
+      "key": "g",
+      "raw": "'g'"
+    },
+    {
+      "timestamp": 14.383213400025852,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 14.393165300018154,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 14.410320899973158,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 14.444471499999054,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 14.476590599981137,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 14.480815600021742,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 14.534517600026447,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 14.536254499980714,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 14.581928999978118,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 14.618012699997053,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 14.714454300003126,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 14.790812399995048,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 14.858671099995263,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 14.869105199992191,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 14.987983600003645,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.013691000000108,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.025796599977184,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.038607000024058,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 15.039370100013912,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 15.124514400027692,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.135578299988993,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 15.138957799994387,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.155357600015122,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.281268600025214,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 15.30970799998613,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.31391560001066,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.33104000001913,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.333334799972363,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.396568499971181,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 15.404455600015353,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.416933999978937,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.418770599993877,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.439790499978699,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 15.450539099983871,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.528272899973672,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.533790400018916,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.554687600000761,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 15.568104400008451,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 15.5773262999719,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 15.58587259997148,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.600320699973963,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.662937699991744,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 15.667971100017894,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.683753699995577,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 15.685245400003623,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.701279999979306,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.703292399994098,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 15.721130900026765,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.789078400004655,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 15.804791099973954,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 15.832717199984472,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 15.848302599973977,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 15.859291100001428,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.862300199980382,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.886789400014095,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.926246899995022,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 15.930533899983857,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 15.95576019998407,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 15.960416699992493,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 15.974095000012312,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 15.993703300016932,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 16.005260100006126,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.07767710002372,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.102838599996176,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.115793799981475,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.13065090001328,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.165559999994002,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 16.168701999995392,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 16.18136200000299,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 16.1923818999785,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 16.208052599977236,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 16.21268549998058,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 16.22571249998873,
+      "event": "press",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 16.238607399980538,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.243329000019003,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.258727599983104,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 16.260504900012165,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.296460999990813,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.356975300004706,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.361222099978477,
+      "event": "release",
+      "key": "Key.space",
+      "raw": "Key.space"
+    },
+    {
+      "timestamp": 16.377464900026098,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.406638799991924,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.417274000006728,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.44203719997313,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 16.45546829997329,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 16.490047400002368,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.494398100010585,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.50797799997963,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.538177700014785,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.631828200013842,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.657243499998003,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.66605320002418,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.690874300024007,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.732967299991287,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 16.76376880001044,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 16.793696300010197,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.80713640002068,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.8670469999779,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 16.941714100015815,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 16.959743699990213,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 16.968508500023745,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 17.006862699985504,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 17.069467100023758,
+      "event": "press",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 17.087142399977893,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 17.22762409999268,
+      "event": "release",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 17.229230400000233,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 17.25612919998821,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 17.34094790002564,
+      "event": "press",
+      "key": "v",
+      "raw": "'v'"
+    },
+    {
+      "timestamp": 17.35380179999629,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 17.36879650002811,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 17.37045460002264,
+      "event": "press",
+      "key": "g",
+      "raw": "'g'"
+    },
+    {
+      "timestamp": 17.48567169997841,
+      "event": "release",
+      "key": "g",
+      "raw": "'g'"
+    },
+    {
+      "timestamp": 17.500430000014603,
+      "event": "release",
+      "key": "v",
+      "raw": "'v'"
+    },
+    {
+      "timestamp": 17.502868900017347,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 17.53168110002298,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 17.63468959997408,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 17.670431400008965,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 17.672455599997193,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 17.7840149999829,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 17.81836099998327,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 17.834636199986562,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 17.892601599975023,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 17.927833200024907,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.000229299999774,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 18.002130999986548,
+      "event": "press",
+      "key": "v",
+      "raw": "'v'"
+    },
+    {
+      "timestamp": 18.085680600022897,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.109957000007853,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 18.124194299976807,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 18.141736900026444,
+      "event": "release",
+      "key": "v",
+      "raw": "'v'"
+    },
+    {
+      "timestamp": 18.190189599990845,
+      "event": "press",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 18.275923000008333,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 18.28042780002579,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 18.335768399992958,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.362609800009523,
+      "event": "release",
+      "key": "y",
+      "raw": "'y'"
+    },
+    {
+      "timestamp": 18.45505759998923,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.456663299992215,
+      "event": "press",
+      "key": "e",
+      "raw": "'e'"
+    },
+    {
+      "timestamp": 18.496034200012218,
+      "event": "press",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 18.565027299977373,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 18.577333400025964,
+      "event": "release",
+      "key": "p",
+      "raw": "'p'"
+    },
+    {
+      "timestamp": 18.641201900027227,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.73900760000106,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 18.74020310002379,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 18.829293799994048,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 18.85676669998793,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 18.89958020002814,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 18.96454110002378,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 19.02224879997084,
+      "event": "release",
+      "key": "e",
+      "raw": "'e'"
+    },
+    {
+      "timestamp": 19.02688560000388,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 19.041367599973455,
+      "event": "press",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 19.179588500002865,
+      "event": "release",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 19.197649199981242,
+      "event": "press",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 19.222361999971326,
+      "event": "press",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 19.235966500011273,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 19.295345699996687,
+      "event": "release",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 19.299528500007,
+      "event": "release",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 19.33554749999894,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 19.360169099993072,
+      "event": "press",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 19.474209500011057,
+      "event": "release",
+      "key": "f",
+      "raw": "'f'"
+    },
+    {
+      "timestamp": 19.475508000003174,
+      "event": "press",
+      "key": "[",
+      "raw": "'['"
+    },
+    {
+      "timestamp": 19.490692100021988,
+      "event": "press",
+      "key": "o",
+      "raw": "'o'"
+    },
+    {
+      "timestamp": 19.504553999984637,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 19.52931150002405,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 19.540129499975592,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 19.625912800023798,
+      "event": "release",
+      "key": "o",
+      "raw": "'o'"
+    },
+    {
+      "timestamp": 19.64209410001058,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 19.66230219998397,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 19.66689240001142,
+      "event": "release",
+      "key": "[",
+      "raw": "'['"
+    },
+    {
+      "timestamp": 19.71637280000141,
+      "event": "press",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 19.814447499986272,
+      "event": "press",
+      "key": "[",
+      "raw": "'['"
+    },
+    {
+      "timestamp": 19.82617760001449,
+      "event": "release",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 19.82828969997354,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 19.858142199984286,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 19.8859876000206,
+      "event": "release",
+      "key": "[",
+      "raw": "'['"
+    },
+    {
+      "timestamp": 19.89797480002744,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 19.9487030999735,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 19.95064170000842,
+      "event": "press",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 19.991232400003355,
+      "event": "press",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 20.10031250002794,
+      "event": "release",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 20.105083099973854,
+      "event": "release",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 20.119488800002728,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 20.132844500010833,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 20.14327579998644,
+      "event": "press",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 20.15777109999908,
+      "event": "press",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 20.196302599972114,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 20.226431799994316,
+      "event": "release",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 20.251623300020583,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 20.25609360000817,
+      "event": "release",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 20.271379099984188,
+      "event": "press",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 20.282967399980407,
+      "event": "press",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 20.416833300027065,
+      "event": "release",
+      "key": "c",
+      "raw": "'c'"
+    },
+    {
+      "timestamp": 20.424124000011943,
+      "event": "release",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 20.794161099998746,
+      "event": "press",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 20.836617699998897,
+      "event": "release",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 21.126255800016224,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.143250600027386,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.145375100022648,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.244868099980522,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.328342500026338,
+      "event": "press",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 21.40358099999139,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 21.4311889000237,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.471789599978365,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 21.489024800015613,
+      "event": "release",
+      "key": "b",
+      "raw": "'b'"
+    },
+    {
+      "timestamp": 21.529847000027075,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 21.867324999999255,
+      "event": "press",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 21.985944200016093,
+      "event": "release",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 22.101651399978437,
+      "event": "press",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 22.22470159997465,
+      "event": "release",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 22.2998161999858,
+      "event": "press",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 22.376677600026596,
+      "event": "release",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 22.483679400000256,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 22.528067599982023,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 22.584052200021688,
+      "event": "press",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 22.602753899991512,
+      "event": "release",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 22.607015200017486,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 22.620388799987268,
+      "event": "press",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 22.631859500019345,
+      "event": "release",
+      "key": "j",
+      "raw": "'j'"
+    },
+    {
+      "timestamp": 22.68428310001036,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 22.6957645000075,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 22.697798900015187,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 22.76188700000057,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 22.800130699994043,
+      "event": "press",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 22.81194859999232,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 22.813935299986042,
+      "event": "press",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 22.850869600020815,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 22.90757909999229,
+      "event": "release",
+      "key": "i",
+      "raw": "'i'"
+    },
+    {
+      "timestamp": 22.91205159999663,
+      "event": "release",
+      "key": "u",
+      "raw": "'u'"
+    },
+    {
+      "timestamp": 22.939037600008305,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 23.25012370001059,
+      "event": "press",
+      "key": "n",
+      "raw": "'n'"
+    },
+    {
+      "timestamp": 23.322398599993903,
+      "event": "release",
+      "key": "n",
+      "raw": "'n'"
+    },
+    {
+      "timestamp": 23.376981700013857,
+      "event": "press",
+      "key": "o",
+      "raw": "'o'"
+    },
+    {
+      "timestamp": 23.454265400010627,
+      "event": "release",
+      "key": "o",
+      "raw": "'o'"
+    },
+    {
+      "timestamp": 23.775727699976414,
+      "event": "press",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 23.879032999975607,
+      "event": "release",
+      "key": "Key.enter",
+      "raw": "Key.enter"
+    },
+    {
+      "timestamp": 24.092873800022062,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 24.103055400017183,
+      "event": "press",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 24.133147399988957,
+      "event": "press",
+      "key": "n",
+      "raw": "'n'"
+    },
+    {
+      "timestamp": 24.18616009998368,
+      "event": "release",
+      "key": "n",
+      "raw": "'n'"
+    },
+    {
+      "timestamp": 24.214083799975924,
+      "event": "press",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 24.226515699992888,
+      "event": "release",
+      "key": "s",
+      "raw": "'s'"
+    },
+    {
+      "timestamp": 24.27573430002667,
+      "event": "release",
+      "key": "k",
+      "raw": "'k'"
+    },
+    {
+      "timestamp": 24.29687419999391,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 24.330414200027008,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 24.38777819997631,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 24.456716699991375,
+      "event": "press",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 24.531171899987385,
+      "event": "press",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 24.541918899980374,
+      "event": "press",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 24.564019299985375,
+      "event": "release",
+      "key": "a",
+      "raw": "'a'"
+    },
+    {
+      "timestamp": 24.617592599999625,
+      "event": "release",
+      "key": "h",
+      "raw": "'h'"
+    },
+    {
+      "timestamp": 24.723628800013103,
+      "event": "release",
+      "key": "d",
+      "raw": "'d'"
+    },
+    {
+      "timestamp": 26.435080500028562,
+      "event": "press",
+      "key": "Key.esc",
+      "raw": "Key.esc"
+    },
+    {
+      "timestamp": 26.492608800006565,
+      "event": "release",
+      "key": "Key.esc",
+      "raw": "Key.esc"
+    }
+  ],
+  "mouse_events": [
+    {
+      "timestamp": 0.8873176000197418,
+      "x": 900,
+      "y": 805,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.8942197000142187,
+      "x": 905,
+      "y": 783,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9011563999811187,
+      "x": 908,
+      "y": 758,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9077444999711588,
+      "x": 914,
+      "y": 728,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9147219000151381,
+      "x": 916,
+      "y": 697,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9214457999914885,
+      "x": 921,
+      "y": 667,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9284360000165179,
+      "x": 923,
+      "y": 639,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9350716000190005,
+      "x": 927,
+      "y": 603,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9418580000055954,
+      "x": 933,
+      "y": 564,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9489791999803856,
+      "x": 937,
+      "y": 535,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9555233999853954,
+      "x": 940,
+      "y": 509,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9623868999769911,
+      "x": 947,
+      "y": 486,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9692986999871209,
+      "x": 950,
+      "y": 469,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9761130000115372,
+      "x": 954,
+      "y": 453,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.982995199970901,
+      "x": 958,
+      "y": 440,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9895996000268497,
+      "x": 961,
+      "y": 429,
+      "event": "move"
+    },
+    {
+      "timestamp": 0.9966974999988452,
+      "x": 963,
+      "y": 418,
+      "event": "move"
+    },
+    {
+      "timestamp": 1.003322099975776,
+      "x": 966,
+      "y": 406,
+      "event": "move"
+    },
+    {
+      "timestamp": 1.0102344999904744,
+      "x": 969,
+      "y": 395,
+      "event": "move"
+    },
+    {
+      "timestamp": 1.194667899981141,
+      "x": 969,
+      "y": 395,
+      "event": "click",
+      "button": "Button.left"
+    },
+    {
+      "timestamp": 1.4118427999783307,
+      "x": 969,
+      "y": 395,
+      "event": "release",
+      "button": "Button.left"
+    },
+    {
+      "timestamp": 2.083069499989506,
+      "x": 963,
+      "y": 406,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.0898068000096828,
+      "x": 957,
+      "y": 417,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.0964894000208005,
+      "x": 953,
+      "y": 428,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1031176000251435,
+      "x": 951,
+      "y": 436,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1099070999771357,
+      "x": 949,
+      "y": 444,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1166568999760784,
+      "x": 946,
+      "y": 451,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.123544199974276,
+      "x": 944,
+      "y": 460,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.130248399975244,
+      "x": 941,
+      "y": 467,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1371783000067808,
+      "x": 940,
+      "y": 475,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1439560999860987,
+      "x": 936,
+      "y": 486,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1507575000287034,
+      "x": 932,
+      "y": 495,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1576025999966078,
+      "x": 928,
+      "y": 505,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.164430500008166,
+      "x": 924,
+      "y": 516,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1712422000127845,
+      "x": 920,
+      "y": 528,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1779702000203542,
+      "x": 917,
+      "y": 537,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1847402999992482,
+      "x": 913,
+      "y": 544,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.1916844000224955,
+      "x": 910,
+      "y": 551,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.198464800021611,
+      "x": 907,
+      "y": 559,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.2052948999917135,
+      "x": 903,
+      "y": 566,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.2123077000142075,
+      "x": 899,
+      "y": 577,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.218887700000778,
+      "x": 896,
+      "y": 581,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.856530199991539,
+      "x": 889,
+      "y": 593,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.863538699981291,
+      "x": 873,
+      "y": 619,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.8703439999953844,
+      "x": 863,
+      "y": 636,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.8771437000250444,
+      "x": 847,
+      "y": 666,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.8838795999763533,
+      "x": 830,
+      "y": 702,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.8909323000116274,
+      "x": 817,
+      "y": 731,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.897420900000725,
+      "x": 806,
+      "y": 756,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9042403000057675,
+      "x": 795,
+      "y": 778,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.911197600013111,
+      "x": 790,
+      "y": 796,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9180145999998786,
+      "x": 783,
+      "y": 808,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9248220999725163,
+      "x": 779,
+      "y": 820,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9315406000241637,
+      "x": 775,
+      "y": 828,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.938469199987594,
+      "x": 773,
+      "y": 835,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9453427999978885,
+      "x": 771,
+      "y": 839,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9522090000100434,
+      "x": 770,
+      "y": 843,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.9588871999876574,
+      "x": 769,
+      "y": 844,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.965765899978578,
+      "x": 768,
+      "y": 845,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.972566200012807,
+      "x": 767,
+      "y": 846,
+      "event": "move"
+    },
+    {
+      "timestamp": 2.979463500028942,
+      "x": 767,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.040841999987606,
+      "x": 767,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.047581100021489,
+      "x": 768,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.06118110002717,
+      "x": 769,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.068100099975709,
+      "x": 772,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.074893900018651,
+      "x": 775,
+      "y": 847,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.0819745999760926,
+      "x": 777,
+      "y": 846,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.088583100005053,
+      "x": 784,
+      "y": 846,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.0954982999828644,
+      "x": 792,
+      "y": 845,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1023618999752216,
+      "x": 801,
+      "y": 843,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.10909929999616,
+      "x": 816,
+      "y": 842,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.116058100014925,
+      "x": 831,
+      "y": 841,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1227669999934733,
+      "x": 850,
+      "y": 838,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1297036000178196,
+      "x": 871,
+      "y": 836,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1363014000235125,
+      "x": 897,
+      "y": 833,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1430143999750726,
+      "x": 923,
+      "y": 829,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1501588000101037,
+      "x": 948,
+      "y": 826,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.15678860002663,
+      "x": 966,
+      "y": 825,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.163486599980388,
+      "x": 985,
+      "y": 822,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.170411199971568,
+      "x": 1002,
+      "y": 820,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1773777999915183,
+      "x": 1019,
+      "y": 818,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.1842964999959804,
+      "x": 1032,
+      "y": 815,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.191039400000591,
+      "x": 1044,
+      "y": 812,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.197801399976015,
+      "x": 1054,
+      "y": 811,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2049059999990277,
+      "x": 1063,
+      "y": 810,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2116287000244483,
+      "x": 1068,
+      "y": 809,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2182299999985844,
+      "x": 1072,
+      "y": 808,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2252002999885008,
+      "x": 1075,
+      "y": 808,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2318534000078216,
+      "x": 1077,
+      "y": 807,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2386867000022903,
+      "x": 1078,
+      "y": 807,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.245546300022397,
+      "x": 1079,
+      "y": 806,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.252258200023789,
+      "x": 1080,
+      "y": 806,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2591058000107296,
+      "x": 1080,
+      "y": 806,
+      "event": "move"
+    },
+    {
+      "timestamp": 3.2726785999839194,
+      "x": 1081,
+      "y": 806,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.06417650001822,
+      "x": 1079,
+      "y": 795,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.07103819999611,
+      "x": 1076,
+      "y": 769,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.077724499977194,
+      "x": 1070,
+      "y": 736,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.084596299973782,
+      "x": 1066,
+      "y": 701,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.091324099979829,
+      "x": 1062,
+      "y": 672,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.098298099997919,
+      "x": 1061,
+      "y": 654,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.105297799978871,
+      "x": 1057,
+      "y": 623,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.111784500011709,
+      "x": 1055,
+      "y": 581,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.118906599993352,
+      "x": 1052,
+      "y": 552,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.125693799986038,
+      "x": 1050,
+      "y": 521,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.132378800015431,
+      "x": 1048,
+      "y": 493,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.139234900008887,
+      "x": 1046,
+      "y": 468,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.146003299974836,
+      "x": 1045,
+      "y": 450,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.152757700008806,
+      "x": 1045,
+      "y": 433,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.1597187999868765,
+      "x": 1044,
+      "y": 420,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.166410000005271,
+      "x": 1042,
+      "y": 406,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.173231600027066,
+      "x": 1041,
+      "y": 396,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.180140400014352,
+      "x": 1041,
+      "y": 388,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.186879899993073,
+      "x": 1040,
+      "y": 381,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.193758099980187,
+      "x": 1039,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.20049979997566,
+      "x": 1038,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.207490500004496,
+      "x": 1036,
+      "y": 364,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.214297499973327,
+      "x": 1033,
+      "y": 361,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.2210344999912195,
+      "x": 1029,
+      "y": 357,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.227972500026226,
+      "x": 1026,
+      "y": 353,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.234603199991398,
+      "x": 1020,
+      "y": 348,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.241455700015649,
+      "x": 1013,
+      "y": 343,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.248271999997087,
+      "x": 1005,
+      "y": 338,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.255117300024722,
+      "x": 996,
+      "y": 334,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.262219400028698,
+      "x": 989,
+      "y": 330,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.268822300015017,
+      "x": 982,
+      "y": 329,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.275582999980543,
+      "x": 973,
+      "y": 327,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.282557800004724,
+      "x": 966,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.289273299975321,
+      "x": 961,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.2961405999958515,
+      "x": 956,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.302834599977359,
+      "x": 950,
+      "y": 324,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.309696900018025,
+      "x": 944,
+      "y": 324,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.316621000005398,
+      "x": 937,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.323352899984457,
+      "x": 933,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.330304500006605,
+      "x": 929,
+      "y": 325,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.337032400013413,
+      "x": 925,
+      "y": 326,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.343895099998917,
+      "x": 921,
+      "y": 327,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.350728299992625,
+      "x": 919,
+      "y": 327,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.357432699995115,
+      "x": 916,
+      "y": 328,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.364377700025216,
+      "x": 913,
+      "y": 329,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.371166699973401,
+      "x": 911,
+      "y": 329,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.3779343999922276,
+      "x": 910,
+      "y": 329,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.384864500025287,
+      "x": 908,
+      "y": 330,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.391660200024489,
+      "x": 907,
+      "y": 330,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.398469900013879,
+      "x": 905,
+      "y": 331,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.405263799999375,
+      "x": 902,
+      "y": 331,
+      "event": "move"
+    },
+    {
+      "timestamp": 6.412149399984628,
+      "x": 899,
+      "y": 332,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.251432600023691,
+      "x": 898,
+      "y": 342,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.258579400018789,
+      "x": 895,
+      "y": 359,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.265335500007495,
+      "x": 893,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.272025400015991,
+      "x": 891,
+      "y": 393,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.27884919999633,
+      "x": 888,
+      "y": 414,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.285592700005509,
+      "x": 887,
+      "y": 432,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.292255999986082,
+      "x": 885,
+      "y": 453,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.299386599974241,
+      "x": 881,
+      "y": 488,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.306343999982346,
+      "x": 878,
+      "y": 514,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.313013700011652,
+      "x": 876,
+      "y": 542,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.319932000013068,
+      "x": 873,
+      "y": 574,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.326779399998486,
+      "x": 871,
+      "y": 599,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.33356380002806,
+      "x": 869,
+      "y": 620,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.340292699984275,
+      "x": 868,
+      "y": 639,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.347166899999138,
+      "x": 867,
+      "y": 657,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.354020000027958,
+      "x": 865,
+      "y": 674,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.360773499996867,
+      "x": 864,
+      "y": 690,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.367555600008927,
+      "x": 862,
+      "y": 702,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.374435000005178,
+      "x": 862,
+      "y": 715,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.381754399975762,
+      "x": 862,
+      "y": 727,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.388034700008575,
+      "x": 862,
+      "y": 737,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.395234299998265,
+      "x": 862,
+      "y": 749,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.401785800000653,
+      "x": 863,
+      "y": 757,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.408470100024715,
+      "x": 864,
+      "y": 763,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.4153585999738425,
+      "x": 866,
+      "y": 768,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.422142099996563,
+      "x": 867,
+      "y": 772,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.428994900023099,
+      "x": 867,
+      "y": 776,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.43576080002822,
+      "x": 868,
+      "y": 779,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.442612399987411,
+      "x": 868,
+      "y": 781,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.449359500024002,
+      "x": 869,
+      "y": 783,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.456512800010387,
+      "x": 869,
+      "y": 785,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.463214199990034,
+      "x": 870,
+      "y": 786,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.469915600027889,
+      "x": 870,
+      "y": 788,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.476679100014735,
+      "x": 870,
+      "y": 789,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.49026779999258,
+      "x": 870,
+      "y": 789,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.982072999991942,
+      "x": 872,
+      "y": 781,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.98886979999952,
+      "x": 874,
+      "y": 768,
+      "event": "move"
+    },
+    {
+      "timestamp": 7.995705600013025,
+      "x": 878,
+      "y": 752,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.002390399982687,
+      "x": 883,
+      "y": 739,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.009154599974863,
+      "x": 887,
+      "y": 724,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.016058899986092,
+      "x": 890,
+      "y": 708,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.022771799995098,
+      "x": 894,
+      "y": 689,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.029567899997346,
+      "x": 901,
+      "y": 665,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.036499599984381,
+      "x": 906,
+      "y": 642,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.043282600003295,
+      "x": 911,
+      "y": 616,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.05008590000216,
+      "x": 919,
+      "y": 585,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.056877200026065,
+      "x": 925,
+      "y": 565,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.063652399985585,
+      "x": 929,
+      "y": 548,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.070623099978548,
+      "x": 935,
+      "y": 528,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.077451799996197,
+      "x": 939,
+      "y": 513,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.084226800012402,
+      "x": 944,
+      "y": 498,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.091028800001368,
+      "x": 946,
+      "y": 484,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.097834100015461,
+      "x": 949,
+      "y": 474,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.104669900028966,
+      "x": 951,
+      "y": 463,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.111591599998064,
+      "x": 954,
+      "y": 453,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.118306900025345,
+      "x": 957,
+      "y": 444,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.125114499998745,
+      "x": 959,
+      "y": 435,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.132050100015476,
+      "x": 962,
+      "y": 425,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.138826099981088,
+      "x": 963,
+      "y": 416,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.145601700001862,
+      "x": 964,
+      "y": 409,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.152356699982192,
+      "x": 965,
+      "y": 401,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.159218000015244,
+      "x": 967,
+      "y": 391,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.166097600013018,
+      "x": 967,
+      "y": 387,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.172836999990977,
+      "x": 968,
+      "y": 383,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.179935400024988,
+      "x": 968,
+      "y": 380,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.186530000006314,
+      "x": 967,
+      "y": 379,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.193409600004088,
+      "x": 966,
+      "y": 377,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.200208699970972,
+      "x": 965,
+      "y": 376,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.20708859997103,
+      "x": 964,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.213864099991042,
+      "x": 963,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.220670200011227,
+      "x": 961,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.227508299984038,
+      "x": 957,
+      "y": 373,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.234324600023683,
+      "x": 953,
+      "y": 371,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.241208199993707,
+      "x": 944,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.248015600023791,
+      "x": 934,
+      "y": 363,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.254840500012506,
+      "x": 918,
+      "y": 356,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.261601999984123,
+      "x": 905,
+      "y": 349,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.268491399998311,
+      "x": 891,
+      "y": 342,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.275167800020427,
+      "x": 877,
+      "y": 334,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.28218310000375,
+      "x": 863,
+      "y": 327,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.288944699976128,
+      "x": 849,
+      "y": 320,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.29577289998997,
+      "x": 835,
+      "y": 314,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.302547300001606,
+      "x": 823,
+      "y": 309,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.309433099988382,
+      "x": 811,
+      "y": 306,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.316289499984123,
+      "x": 802,
+      "y": 304,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.323200799990445,
+      "x": 798,
+      "y": 303,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.329978700028732,
+      "x": 793,
+      "y": 303,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.33665180002572,
+      "x": 790,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.343454700021539,
+      "x": 788,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.350391299987677,
+      "x": 786,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.35723500000313,
+      "x": 783,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 8.364000600005966,
+      "x": 783,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.093232800019905,
+      "x": 783,
+      "y": 321,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.10019770002691,
+      "x": 783,
+      "y": 355,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.106810300028883,
+      "x": 784,
+      "y": 393,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.113755099999253,
+      "x": 786,
+      "y": 428,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.120525099977385,
+      "x": 786,
+      "y": 479,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.127267299976666,
+      "x": 788,
+      "y": 520,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.134145900025032,
+      "x": 792,
+      "y": 556,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.141041200025938,
+      "x": 793,
+      "y": 584,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.147736300015822,
+      "x": 795,
+      "y": 615,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.15469439997105,
+      "x": 797,
+      "y": 637,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.161486800003331,
+      "x": 798,
+      "y": 650,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.168507100024726,
+      "x": 798,
+      "y": 660,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.175267599988729,
+      "x": 799,
+      "y": 667,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.182070899987593,
+      "x": 799,
+      "y": 672,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.188775099988561,
+      "x": 799,
+      "y": 674,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.195648199995048,
+      "x": 799,
+      "y": 675,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.20246960001532,
+      "x": 800,
+      "y": 675,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.209313299972564,
+      "x": 802,
+      "y": 675,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.2160788999754,
+      "x": 804,
+      "y": 672,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.222935100027826,
+      "x": 808,
+      "y": 668,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.229797000007238,
+      "x": 814,
+      "y": 659,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.236616000009235,
+      "x": 819,
+      "y": 650,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.243383200024255,
+      "x": 825,
+      "y": 640,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.250207400007639,
+      "x": 835,
+      "y": 626,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.25700510002207,
+      "x": 843,
+      "y": 611,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.263794100028463,
+      "x": 855,
+      "y": 591,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.270759499981068,
+      "x": 870,
+      "y": 564,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.277533199987374,
+      "x": 885,
+      "y": 538,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.284416100010276,
+      "x": 900,
+      "y": 511,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.291254099982325,
+      "x": 916,
+      "y": 482,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.298037000000477,
+      "x": 936,
+      "y": 436,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.304867299972102,
+      "x": 946,
+      "y": 405,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.311608200019691,
+      "x": 958,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.318408699997235,
+      "x": 970,
+      "y": 342,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.325304300000425,
+      "x": 982,
+      "y": 311,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.332147800014354,
+      "x": 988,
+      "y": 290,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.339014699973632,
+      "x": 994,
+      "y": 269,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.345713799993973,
+      "x": 998,
+      "y": 255,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.352560000028461,
+      "x": 1001,
+      "y": 243,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.359378800028935,
+      "x": 1004,
+      "y": 236,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.36618950002594,
+      "x": 1004,
+      "y": 231,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.373136600013822,
+      "x": 1004,
+      "y": 229,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.379805099975783,
+      "x": 1004,
+      "y": 228,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.400214500026777,
+      "x": 1004,
+      "y": 228,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.40717439999571,
+      "x": 1002,
+      "y": 228,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.413941100006923,
+      "x": 998,
+      "y": 230,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.420792400022037,
+      "x": 994,
+      "y": 232,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.427587600017432,
+      "x": 987,
+      "y": 235,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.43440670002019,
+      "x": 981,
+      "y": 240,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.441246700007468,
+      "x": 974,
+      "y": 246,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.448062199982814,
+      "x": 967,
+      "y": 253,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.454909200023394,
+      "x": 957,
+      "y": 261,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.461778400000185,
+      "x": 948,
+      "y": 269,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.468520499998704,
+      "x": 939,
+      "y": 275,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.475445399992168,
+      "x": 930,
+      "y": 283,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.482449700008146,
+      "x": 919,
+      "y": 290,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.489027299976442,
+      "x": 908,
+      "y": 295,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.495921799971256,
+      "x": 899,
+      "y": 302,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.5026195999817,
+      "x": 890,
+      "y": 307,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.509519600018393,
+      "x": 881,
+      "y": 313,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.51640010002302,
+      "x": 872,
+      "y": 317,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.523113299976103,
+      "x": 866,
+      "y": 322,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.530097000009846,
+      "x": 860,
+      "y": 326,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.536861500004306,
+      "x": 854,
+      "y": 328,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.543605000013486,
+      "x": 852,
+      "y": 330,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.550476100004744,
+      "x": 849,
+      "y": 333,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.557281500019599,
+      "x": 846,
+      "y": 334,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.564294299983885,
+      "x": 845,
+      "y": 335,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.571086100011598,
+      "x": 845,
+      "y": 336,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.577958500012755,
+      "x": 844,
+      "y": 337,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.591399000026286,
+      "x": 843,
+      "y": 337,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.625654499977827,
+      "x": 842,
+      "y": 337,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.639138299971819,
+      "x": 841,
+      "y": 337,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.939416999986861,
+      "x": 841,
+      "y": 364,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.946474900003523,
+      "x": 839,
+      "y": 399,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.953037599974778,
+      "x": 837,
+      "y": 427,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.959803099976853,
+      "x": 837,
+      "y": 458,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.966652099974453,
+      "x": 835,
+      "y": 486,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.973449699988123,
+      "x": 833,
+      "y": 521,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.980542699981015,
+      "x": 832,
+      "y": 549,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.987199300026987,
+      "x": 830,
+      "y": 571,
+      "event": "move"
+    },
+    {
+      "timestamp": 9.994080699980259,
+      "x": 829,
+      "y": 592,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.000776599976234,
+      "x": 825,
+      "y": 618,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.00762599997688,
+      "x": 822,
+      "y": 640,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.014569299994037,
+      "x": 821,
+      "y": 654,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.021357999998145,
+      "x": 819,
+      "y": 664,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.028380299976561,
+      "x": 818,
+      "y": 671,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.034937200020067,
+      "x": 817,
+      "y": 676,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.04244569997536,
+      "x": 816,
+      "y": 680,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.04860560002271,
+      "x": 815,
+      "y": 683,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.055484300013632,
+      "x": 815,
+      "y": 686,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.062318200012669,
+      "x": 815,
+      "y": 686,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.069045000011101,
+      "x": 815,
+      "y": 687,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.075919899973087,
+      "x": 814,
+      "y": 687,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.089699400006793,
+      "x": 814,
+      "y": 688,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.096390100021381,
+      "x": 814,
+      "y": 689,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.10318209999241,
+      "x": 814,
+      "y": 690,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.11002640001243,
+      "x": 813,
+      "y": 691,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.116881199995987,
+      "x": 812,
+      "y": 694,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.123744299984537,
+      "x": 811,
+      "y": 697,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.130545000021812,
+      "x": 809,
+      "y": 701,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.137315600004513,
+      "x": 807,
+      "y": 708,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.144296500016935,
+      "x": 804,
+      "y": 715,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.150998299999628,
+      "x": 801,
+      "y": 723,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.15780679997988,
+      "x": 799,
+      "y": 728,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.164594799978659,
+      "x": 793,
+      "y": 739,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.171438299992587,
+      "x": 788,
+      "y": 750,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.178309399983846,
+      "x": 782,
+      "y": 762,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.185362400021404,
+      "x": 776,
+      "y": 774,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.19205840001814,
+      "x": 772,
+      "y": 785,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.198681899986695,
+      "x": 768,
+      "y": 794,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.205718700017314,
+      "x": 763,
+      "y": 804,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.212338600016665,
+      "x": 759,
+      "y": 815,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.219240400008857,
+      "x": 755,
+      "y": 825,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.225986199977342,
+      "x": 749,
+      "y": 836,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.232747400004882,
+      "x": 741,
+      "y": 848,
+      "event": "move"
+    },
+    {
+      "timestamp": 10.239663399988785,
+      "x": 740,
+      "y": 849,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.460550800024066,
+      "x": 743,
+      "y": 840,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.467357099987566,
+      "x": 750,
+      "y": 824,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.474163000006229,
+      "x": 754,
+      "y": 809,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.481020700011868,
+      "x": 759,
+      "y": 791,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.488010099972598,
+      "x": 769,
+      "y": 764,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.494697200017981,
+      "x": 776,
+      "y": 733,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.501458299986552,
+      "x": 786,
+      "y": 703,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.50823139998829,
+      "x": 796,
+      "y": 668,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.515081399993505,
+      "x": 804,
+      "y": 635,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.521978100005072,
+      "x": 814,
+      "y": 601,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.528791100019589,
+      "x": 821,
+      "y": 574,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.535614299995359,
+      "x": 827,
+      "y": 553,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.542498799972236,
+      "x": 834,
+      "y": 529,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.549280899984296,
+      "x": 842,
+      "y": 502,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.5561105000088,
+      "x": 848,
+      "y": 478,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.562951600004453,
+      "x": 854,
+      "y": 460,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.569718400016427,
+      "x": 860,
+      "y": 445,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.576532399980351,
+      "x": 864,
+      "y": 431,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.58340980001958,
+      "x": 868,
+      "y": 418,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.59020530001726,
+      "x": 872,
+      "y": 407,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.597095699980855,
+      "x": 874,
+      "y": 402,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.603819000010844,
+      "x": 877,
+      "y": 396,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.61061749997316,
+      "x": 879,
+      "y": 390,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.617503700021189,
+      "x": 880,
+      "y": 386,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.624375800020061,
+      "x": 881,
+      "y": 384,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.631253200001083,
+      "x": 882,
+      "y": 381,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.638030299975071,
+      "x": 883,
+      "y": 378,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.644798599998467,
+      "x": 883,
+      "y": 377,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.651663399999961,
+      "x": 883,
+      "y": 377,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.665282599977218,
+      "x": 883,
+      "y": 376,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.692742899991572,
+      "x": 883,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.699520300026052,
+      "x": 882,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.706423400028143,
+      "x": 881,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.713228599983267,
+      "x": 880,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.72007510002004,
+      "x": 878,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.7269004000118,
+      "x": 875,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.733515899977647,
+      "x": 870,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.740476200007834,
+      "x": 864,
+      "y": 375,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.747479100013152,
+      "x": 859,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.753999100008514,
+      "x": 852,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.76091810001526,
+      "x": 842,
+      "y": 374,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.7677150000236,
+      "x": 834,
+      "y": 373,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.77470790001098,
+      "x": 825,
+      "y": 372,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.781534400011878,
+      "x": 818,
+      "y": 371,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.788147900020704,
+      "x": 809,
+      "y": 369,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.795083999983035,
+      "x": 801,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.801774299994577,
+      "x": 796,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.808630299987271,
+      "x": 792,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.815418199985288,
+      "x": 788,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.822274199977983,
+      "x": 785,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.829130000027362,
+      "x": 785,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.835957799979951,
+      "x": 783,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.842833600006998,
+      "x": 782,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.849596599990036,
+      "x": 781,
+      "y": 368,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.863223000022117,
+      "x": 780,
+      "y": 367,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.870028499979526,
+      "x": 779,
+      "y": 367,
+      "event": "move"
+    },
+    {
+      "timestamp": 12.904115299985278,
+      "x": 779,
+      "y": 366,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.219059100025333,
+      "x": 779,
+      "y": 393,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.225090000021737,
+      "x": 779,
+      "y": 417,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.231396000017412,
+      "x": 779,
+      "y": 448,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.23811570001999,
+      "x": 779,
+      "y": 489,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.24492680002004,
+      "x": 779,
+      "y": 510,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.25168049999047,
+      "x": 781,
+      "y": 529,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.25848139997106,
+      "x": 781,
+      "y": 545,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.265307300025597,
+      "x": 782,
+      "y": 562,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.272105299984105,
+      "x": 783,
+      "y": 575,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.279004900017753,
+      "x": 785,
+      "y": 586,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.285690399992745,
+      "x": 787,
+      "y": 596,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.292609500000253,
+      "x": 788,
+      "y": 604,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.299690300016664,
+      "x": 790,
+      "y": 613,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.30639430001611,
+      "x": 791,
+      "y": 623,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.313263799995184,
+      "x": 793,
+      "y": 632,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.320016100013163,
+      "x": 795,
+      "y": 639,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.32694990001619,
+      "x": 796,
+      "y": 645,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.333697199996095,
+      "x": 797,
+      "y": 650,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.340927299985196,
+      "x": 797,
+      "y": 654,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.347335800004657,
+      "x": 798,
+      "y": 658,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.354031399998348,
+      "x": 798,
+      "y": 661,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.36100350000197,
+      "x": 798,
+      "y": 664,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.367771700024605,
+      "x": 799,
+      "y": 667,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.37450139998691,
+      "x": 799,
+      "y": 669,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.3817097999854,
+      "x": 800,
+      "y": 671,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.38839249999728,
+      "x": 800,
+      "y": 673,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.395074100000784,
+      "x": 800,
+      "y": 674,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.40210110001499,
+      "x": 800,
+      "y": 676,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.408691600023303,
+      "x": 801,
+      "y": 679,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.41560990002472,
+      "x": 802,
+      "y": 680,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.42232090001926,
+      "x": 803,
+      "y": 684,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.42912540002726,
+      "x": 803,
+      "y": 687,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.436064700013958,
+      "x": 804,
+      "y": 689,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.4427374000079,
+      "x": 805,
+      "y": 692,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.449611100018956,
+      "x": 806,
+      "y": 698,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.456460000015795,
+      "x": 807,
+      "y": 703,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.463208700006362,
+      "x": 809,
+      "y": 711,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.469966100004967,
+      "x": 812,
+      "y": 716,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.476783299993258,
+      "x": 813,
+      "y": 723,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.48365890001878,
+      "x": 815,
+      "y": 730,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.490538300015032,
+      "x": 818,
+      "y": 738,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.4973566000117,
+      "x": 820,
+      "y": 743,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.504177500028163,
+      "x": 821,
+      "y": 750,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.511093300010543,
+      "x": 825,
+      "y": 756,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.51787709997734,
+      "x": 827,
+      "y": 763,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.524751199991442,
+      "x": 831,
+      "y": 769,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.531368100026157,
+      "x": 833,
+      "y": 773,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.53832519997377,
+      "x": 836,
+      "y": 779,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.54524180002045,
+      "x": 838,
+      "y": 783,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.55188400001498,
+      "x": 840,
+      "y": 787,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.558981699985452,
+      "x": 842,
+      "y": 791,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.565575500018895,
+      "x": 845,
+      "y": 794,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.572441799973603,
+      "x": 846,
+      "y": 797,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.57918729999801,
+      "x": 848,
+      "y": 799,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.58632070000749,
+      "x": 849,
+      "y": 800,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.592812900024,
+      "x": 849,
+      "y": 800,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.59973130002618,
+      "x": 850,
+      "y": 800,
+      "event": "move"
+    },
+    {
+      "timestamp": 25.830240999988746,
+      "x": 850,
+      "y": 800,
+      "event": "click",
+      "button": "Button.left"
+    },
+    {
+      "timestamp": 26.046400399995036,
+      "x": 850,
+      "y": 800,
+      "event": "release",
+      "button": "Button.left"
+    }
+  ],
+  "total_keyboard_events": 262,
+  "total_mouse_events": 471
+}

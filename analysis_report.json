@@ -1,0 +1,110 @@
+{
+  "classification": "SUSPICIOUS",
+  "overall_score": 0.695,
+  "confidence": 0.305,
+  "verdict": "\ud83d\udfe1 SUSPICIOUS",
+  "features": {
+    "interval_distribution": {
+      "score": 1.0,
+      "weight": 1.5,
+      "weighted_score": 1.5,
+      "details": [
+        "Right-skewed distribution (skew=7.55) \u2713",
+        "Heavy-tailed distribution (kurtosis=69.60) \u2713",
+        "Mean IKI in human range (97ms) \u2713"
+      ],
+      "data": {
+        "mean_iki_ms": 97.14283538498701,
+        "std_iki_ms": 182.51988338362258,
+        "skewness": 7.552108627889399,
+        "kurtosis": 69.60303419045394
+      }
+    },
+    "rhythm_regularity": {
+      "score": 1.0,
+      "weight": 2.0,
+      "weighted_score": 2.0,
+      "details": [
+        "High rhythm variability (CV=1.879) \u2713 \u2014 looks human"
+      ],
+      "data": {
+        "coefficient_of_variation": 1.8788815733067454
+      }
+    },
+    "digraph_timing": {
+      "score": 0.2,
+      "weight": 1.5,
+      "weighted_score": 0.3,
+      "details": [
+        "Low digraph timing variance (0.0024) \u2717 \u2014 uniform timing",
+        "Fastest digraphs: [('up', '10ms'), ('ds', '11ms'), ('ui', '12ms')]",
+        "Slowest digraphs: [('kh', '115ms'), ('dc', '134ms'), ('sn', '215ms')]"
+      ],
+      "data": {
+        "unique_digraphs_analyzed": 22
+      }
+    },
+    "pause_patterns": {
+      "score": 0.5,
+      "weight": 1.5,
+      "weighted_score": 0.75,
+      "details": [
+        "Very few pauses (1.5%) \u2717 \u2014 suspicious",
+        "Varied pause durations (CV=0.57) \u2713 \u2014 human-like"
+      ],
+      "data": {
+        "pause_count": 2,
+        "pause_ratio": 0.015384615384615385
+      }
+    },
+    "backspace_usage": {
+      "score": 0.0,
+      "weight": 1.0,
+      "weighted_score": 0.0,
+      "details": [
+        "Zero backspaces \u2717 \u2014 strong automation signal"
+      ],
+      "data": {
+        "backspace_count": 0,
+        "total_keys": 131,
+        "ratio": 0.0
+      }
+    },
+    "dwell_times": {
+      "score": 1.0,
+      "weight": 1.0,
+      "weighted_score": 1.0,
+      "details": [
+        "Mean dwell time in human range (113.8ms) \u2713",
+        "Variable dwell times (CV=0.54) \u2713"
+      ],
+      "data": {
+        "sample_count": 131
+      }
+    },
+    "burst_uniformity": {
+      "score": 1.0,
+      "weight": 1.0,
+      "weighted_score": 1.0,
+      "details": [
+        "Bursts have natural variation (avg CV=0.616) \u2713",
+        "Detected 15 burst segments"
+      ],
+      "data": {
+        "burst_count": 15
+      }
+    },
+    "mouse_correlation": {
+      "score": 0.8,
+      "weight": 0.5,
+      "weighted_score": 0.4,
+      "details": [
+        "Mouse activity during typing (37.3 events/s) \u2713",
+        "Natural mouse movements (avg 11.9px) \u2713"
+      ],
+      "data": {
+        "mouse_event_count": 471
+      }
+    }
+  }
+}
