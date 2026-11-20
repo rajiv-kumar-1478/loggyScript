@@ -29,6 +29,9 @@ Options:
   --break-interval  Work minutes before taking a break (min,max) [default: 30,60]
   --break-duration  Break sleep minutes (min,max) [default: 3,4]
   --no-breaks       Disable automatic rest breaks
+  --target-window   Only type into a window whose title contains this string
+  --target-window-exact  Require an exact title match
+  --no-focus-guard  Resolve the target window but do not enforce focus
 
 WARNING: This is for educational / research purposes only.
 """
@@ -315,6 +318,373 @@ def _os_hotkey(modifier: str, key_char: str):
     # Release modifier
     time.sleep(random.uniform(0.02, 0.05))
     _os_key_release(mod_scan)
+
+
+# ──────────────────────────────────────────────
+#  Window targeting / focus safety
+# ──────────────────────────────────────────────
+#  SendInput goes to whatever window currently has focus — the typer itself
+#  has no idea where the text lands. A notification, an alt-tab, or a slow
+#  VS Code load is enough to dump hundreds of lines into the wrong app.
+#  These helpers let the typer pin itself to one window and abort instead of
+#  typing blind.
+
+SW_RESTORE = 9
+PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+TOKEN_QUERY = 0x0008
+TokenElevation = 20
+
+_user32 = ctypes.windll.user32
+_kernel32 = ctypes.windll.kernel32
+_advapi32 = ctypes.windll.advapi32
+
+# 64-bit handles must not be truncated to c_int (ctypes' default restype)
+_user32.GetForegroundWindow.restype = ctypes.wintypes.HWND
+_user32.GetForegroundWindow.argtypes = []
+_user32.IsWindow.restype = ctypes.wintypes.BOOL
+_user32.IsWindow.argtypes = [ctypes.wintypes.HWND]
+_user32.IsWindowVisible.restype = ctypes.wintypes.BOOL
+_user32.IsWindowVisible.argtypes = [ctypes.wintypes.HWND]
+_user32.IsIconic.restype = ctypes.wintypes.BOOL
+_user32.IsIconic.argtypes = [ctypes.wintypes.HWND]
+_user32.GetWindowTextLengthW.restype = ctypes.c_int
+_user32.GetWindowTextLengthW.argtypes = [ctypes.wintypes.HWND]
+_user32.GetWindowTextW.restype = ctypes.c_int
+_user32.GetWindowTextW.argtypes = [
+    ctypes.wintypes.HWND, ctypes.wintypes.LPWSTR, ctypes.c_int
+]
+_user32.GetClassNameW.restype = ctypes.c_int
+_user32.GetClassNameW.argtypes = [
+    ctypes.wintypes.HWND, ctypes.wintypes.LPWSTR, ctypes.c_int
+]
+_user32.SetForegroundWindow.restype = ctypes.wintypes.BOOL
+_user32.SetForegroundWindow.argtypes = [ctypes.wintypes.HWND]
+_user32.BringWindowToTop.restype = ctypes.wintypes.BOOL
+_user32.BringWindowToTop.argtypes = [ctypes.wintypes.HWND]
+_user32.SetFocus.restype = ctypes.wintypes.HWND
+_user32.SetFocus.argtypes = [ctypes.wintypes.HWND]
+_user32.ShowWindow.restype = ctypes.wintypes.BOOL
+_user32.ShowWindow.argtypes = [ctypes.wintypes.HWND, ctypes.c_int]
+_user32.AttachThreadInput.restype = ctypes.wintypes.BOOL
+_user32.AttachThreadInput.argtypes = [
+    ctypes.wintypes.DWORD, ctypes.wintypes.DWORD, ctypes.wintypes.BOOL
+]
+_user32.GetWindowThreadProcessId.restype = ctypes.wintypes.DWORD
+_user32.GetWindowThreadProcessId.argtypes = [
+    ctypes.wintypes.HWND, ctypes.POINTER(ctypes.wintypes.DWORD)
+]
+_kernel32.OpenProcess.restype = ctypes.wintypes.HANDLE
+_kernel32.OpenProcess.argtypes = [
+    ctypes.wintypes.DWORD, ctypes.wintypes.BOOL, ctypes.wintypes.DWORD
+]
+_kernel32.CloseHandle.restype = ctypes.wintypes.BOOL
+_kernel32.CloseHandle.argtypes = [ctypes.wintypes.HANDLE]
+_advapi32.OpenProcessToken.restype = ctypes.wintypes.BOOL
+_advapi32.OpenProcessToken.argtypes = [
+    ctypes.wintypes.HANDLE, ctypes.wintypes.DWORD,
+    ctypes.POINTER(ctypes.wintypes.HANDLE)
+]
+_advapi32.GetTokenInformation.restype = ctypes.wintypes.BOOL
+
+WNDENUMPROC = ctypes.WINFUNCTYPE(
+    ctypes.wintypes.BOOL, ctypes.wintypes.HWND, ctypes.wintypes.LPARAM
+)
+
+
+def _safe_text(text: str) -> str:
+    """
+    Make an arbitrary window title safe to print.
+
+    Titles come from other applications and may contain zero-width or other
+    non-ASCII characters the console code page cannot encode. Printing one
+    unguarded raises UnicodeEncodeError in the middle of a run.
+    """
+    encoding = getattr(sys.stdout, 'encoding', None) or 'utf-8'
+    try:
+        text.encode(encoding)
+        return text
+    except (UnicodeEncodeError, LookupError):
+        return text.encode(encoding, errors='replace').decode(
+            encoding, errors='replace')
+
+
+def _window_title(hwnd) -> str:
+    """Return the caption of a window ('' if it has none)."""
+    length = _user32.GetWindowTextLengthW(hwnd)
+    if length <= 0:
+        return ''
+    buf = ctypes.create_unicode_buffer(length + 1)
+    _user32.GetWindowTextW(hwnd, buf, length + 1)
+    return buf.value
+
+
+def _window_class(hwnd) -> str:
+    """Return the Win32 class name of a window."""
+    buf = ctypes.create_unicode_buffer(256)
+    _user32.GetClassNameW(hwnd, buf, 256)
+    return buf.value
+
+
+def _window_pid(hwnd) -> int:
+    """Return the PID that owns a window."""
+    pid = ctypes.wintypes.DWORD()
+    _user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+    return pid.value
+
+
+def _window_thread_id(hwnd) -> int:
+    """Return the UI thread id that owns a window."""
+    pid = ctypes.wintypes.DWORD()
+    return _user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+
+
+def _get_foreground_window():
+    """Return the window that currently has keyboard focus."""
+    return _user32.GetForegroundWindow()
+
+
+def _list_windows() -> list:
+    """List visible top-level windows that have a title."""
+    windows = []
+
+    @WNDENUMPROC
+    def _collect(hwnd, _lparam):
+        if _user32.IsWindowVisible(hwnd):
+            title = _window_title(hwnd)
+            if title:
+                windows.append({
+                    'hwnd': hwnd,
+                    'title': title,
+                    'class': _window_class(hwnd),
+                    'pid': _window_pid(hwnd),
+                })
+        return True
+
+    _user32.EnumWindows(_collect, 0)
+    return windows
+
+
+def find_windows(pattern: str, exact: bool = False) -> list:
+    """
+    Find visible windows whose title matches `pattern`.
+
+    Substring match is case-insensitive by default, which is what you want for
+    `--target-window "Visual Studio Code"` (the real title has the folder name
+    appended). Pass exact=True to require a full match.
+    """
+    if not pattern:
+        return []
+    if exact:
+        return [w for w in _list_windows() if w['title'] == pattern]
+    needle = pattern.casefold()
+    return [w for w in _list_windows() if needle in w['title'].casefold()]
+
+
+def _focus_window(hwnd) -> bool:
+    """
+    Bring `hwnd` to the foreground and verify it actually took focus.
+
+    SetForegroundWindow is refused when the calling thread does not own the
+    foreground window (the "foreground lock"). Attaching to the foreground
+    thread's input queue lifts that restriction for the duration of the call.
+    """
+    if not _user32.IsWindow(hwnd):
+        return False
+
+    if _user32.IsIconic(hwnd):
+        _user32.ShowWindow(hwnd, SW_RESTORE)
+        time.sleep(0.25)
+
+    if _user32.GetForegroundWindow() == hwnd:
+        return True
+
+    fg = _user32.GetForegroundWindow()
+    fg_tid = _window_thread_id(fg) if fg else 0
+    tgt_tid = _window_thread_id(hwnd)
+    attached = False
+    try:
+        if fg_tid and tgt_tid and fg_tid != tgt_tid:
+            attached = bool(_user32.AttachThreadInput(fg_tid, tgt_tid, True))
+        _user32.BringWindowToTop(hwnd)
+        _user32.SetForegroundWindow(hwnd)
+        _user32.SetFocus(hwnd)
+    finally:
+        if attached:
+            _user32.AttachThreadInput(fg_tid, tgt_tid, False)
+
+    return _user32.GetForegroundWindow() == hwnd
+
+
+def _is_process_elevated(pid: int) -> bool:
+    """True if the process runs with an elevated (admin) token."""
+    handle = _kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+    if not handle:
+        return False
+    try:
+        token = ctypes.wintypes.HANDLE()
+        if not _advapi32.OpenProcessToken(
+                handle, TOKEN_QUERY, ctypes.byref(token)):
+            return False
+        try:
+            elevation = ctypes.wintypes.DWORD()
+            size = ctypes.wintypes.DWORD()
+            if not _advapi32.GetTokenInformation(
+                    token, TokenElevation,
+                    ctypes.byref(elevation), ctypes.sizeof(elevation),
+                    ctypes.byref(size)):
+                return False
+            return bool(elevation.value)
+        finally:
+            _kernel32.CloseHandle(token)
+    finally:
+        _kernel32.CloseHandle(handle)
+
+
+def _is_self_elevated() -> bool:
+    """True if this Python process runs elevated."""
+    return _is_process_elevated(os.getpid())
+
+
+class WindowGuard:
+    """
+    Pins the typer to one specific window and refuses to type anywhere else.
+
+    Three jobs:
+      1. resolve()      — find the window once, up front, and fail loudly if the
+                          title matches nothing or is ambiguous
+      2. ensure_focus() — before each file, make sure the target is foreground
+      3. check()        — polled mid-file; if focus was stolen, re-focus once and
+                          abort the file rather than typing into the wrong app
+    """
+
+    def __init__(self, pattern: str, exact: bool = False,
+                 refocus: bool = True):
+        self.pattern = pattern
+        self.exact = exact
+        self.refocus = refocus
+        self.hwnd = None
+        self.title = ''
+        self.pid = 0
+        self.refocus_events = 0
+
+    # ── discovery ──
+    def resolve(self) -> bool:
+        """Locate the target window. Returns False if unusable."""
+        matches = find_windows(self.pattern, exact=self.exact)
+
+        if not matches:
+            print(f"\n  [FOCUS] No visible window matches --target-window "
+                  f"{self.pattern!r}")
+            self._print_candidates()
+            return False
+
+        if len(matches) > 1:
+            fg = _get_foreground_window()
+            chosen = next(
+                (w for w in matches if w['hwnd'] == fg), matches[0]
+            )
+            print(f"\n  [FOCUS] {len(matches)} windows match "
+                  f"{self.pattern!r} — using the "
+                  f"{'focused' if chosen['hwnd'] == fg else 'first'} one:")
+            for w in matches:
+                mark = '→' if w['hwnd'] == chosen['hwnd'] else ' '
+                print(f"    {mark} {_safe_text(w['title'])}")
+            print(f"      Narrow the pattern if this is not the right window.")
+        else:
+            chosen = matches[0]
+
+        self.hwnd = chosen['hwnd']
+        self.title = chosen['title']
+        self.pid = chosen['pid']
+
+        if not _user32.IsWindow(self.hwnd):
+            print(f"  [FOCUS] Target window vanished before typing started.")
+            return False
+
+        print(f"  [FOCUS] Locked onto: {_safe_text(self.title)}")
+        print(f"          class={chosen['class']}  pid={self.pid}")
+
+        # Elevation mismatch makes SendInput fail silently — catch it now
+        # rather than after the first keystroke goes nowhere.
+        if _is_process_elevated(self.pid) and not _is_self_elevated():
+            print("\n  [FOCUS] ERROR: the target window runs elevated (admin) "
+                  "but this script does not.")
+            print("          Windows blocks SendInput from a normal process to "
+                  "an elevated window.")
+            print("          Fix: run this script as Administrator too, or "
+                  "target a non-elevated window.")
+            return False
+
+        return True
+
+    def _print_candidates(self):
+        """Show a few real window titles so the user can copy a correct one."""
+        candidates = [w for w in _list_windows() if w['title'].strip()]
+        if not candidates:
+            return
+        print("          Visible windows right now:")
+        for w in candidates[:15]:
+            print(f"            - {_safe_text(w['title'])}")
+        if len(candidates) > 15:
+            print(f"            ... and {len(candidates) - 15} more")
+
+    # ── focus enforcement ──
+    def alive(self) -> bool:
+        return self.hwnd is not None and bool(_user32.IsWindow(self.hwnd))
+
+    def ensure_focus(self, attempts: int = 3) -> bool:
+        """Make the target window foreground. Returns True when confirmed."""
+        if not self.alive():
+            print("  [FOCUS] Target window is gone (closed or crashed).")
+            return False
+        if _get_foreground_window() == self.hwnd:
+            return True
+        if not self.refocus:
+            # Guard disabled (--no-focus-guard): the window was still resolved
+            # and elevation-checked up front, but focus is not enforced.
+            return True
+
+        for attempt in range(attempts):
+            _focus_window(self.hwnd)
+            time.sleep(0.15 + attempt * 0.10)
+            if _get_foreground_window() == self.hwnd:
+                if attempt:
+                    self.refocus_events += 1
+                return True
+
+        print(f"  [FOCUS] Could not focus {_safe_text(self.title)!r}. "
+              f"Click it once, then let the run continue.")
+        return False
+
+    def check(self) -> bool:
+        """
+        Polled while typing. Returns False to abort the current file.
+
+        A single stolen-focus event is re-focused; if it happens again the file
+        is abandoned so text cannot spray into another application.
+        """
+        if _get_foreground_window() == self.hwnd:
+            return True
+
+        if not self.refocus:
+            return True  # guard disabled for focus, keep typing
+
+        # Focus moved — try to take it back once, then give up.
+        if _focus_window(self.hwnd):
+            self.refocus_events += 1
+            print("\n  [FOCUS] Focus was stolen — target window refocused.")
+            return True
+
+        print("\n  [FOCUS] ABORT: focus left the target window and could not "
+              "be restored.")
+        print("          Stopping this file to avoid typing into the wrong "
+              "application.")
+        return False
+
+    def summary(self) -> str:
+        if self.hwnd is None:
+            return "no target window"
+        return f"{_safe_text(self.title)!r} ({self.refocus_events} refocus events)"
 
 
 # ──────────────────────────────────────────────
@@ -852,6 +1222,11 @@ class HumanTyper:
         # Optional callback (set by ProjectTyper) that is polled while typing so
         # long files still get rest breaks every 30-60 minutes.
         self._periodic_callback = None
+        # Optional focus guard (WindowGuard.check). Polled every few characters
+        # so a stolen focus aborts the file instead of typing into another app.
+        self._focus_check = None
+        self._focus_check_interval = 20
+        self._next_focus_check = 0
         # Slow-moving session rhythm (attention / comfort drift)
         self._rhythm_offset = 1.0
         self._next_rhythm_drift = random.randint(
@@ -1155,9 +1530,17 @@ class HumanTyper:
         time.sleep(random.uniform(*p.pause_after_file_start))
 
         next_periodic_check = 0
+        self._next_focus_check = 0
         while i < len(text):
             if self._stop_event.is_set():
                 return False
+
+            # ── Focus guard: cheap GetForegroundWindow() call every ~20 chars.
+            #    Aborts the file if the target window is no longer focused. ──
+            if self._focus_check is not None and i >= self._next_focus_check:
+                self._next_focus_check = i + self._focus_check_interval
+                if not self._focus_check():
+                    return False
 
             char = text[i]
 
@@ -1368,7 +1751,10 @@ class ProjectTyper:
                  confirm_each: bool = False,
                  break_interval: tuple = (30.0, 60.0),
                  break_duration: tuple = (3.0, 4.0),
-                 enable_breaks: bool = True):
+                 enable_breaks: bool = True,
+                 target_window: str = None,
+                 target_window_exact: bool = False,
+                 focus_guard_enabled: bool = True):
         self.source_dir = os.path.abspath(source_dir)
         self.target_dir = os.path.abspath(target_dir)
         self.speed = speed
@@ -1382,6 +1768,17 @@ class ProjectTyper:
         if self.enable_breaks:
             # Polled by HumanTyper while typing so long files also pause for rest
             self.typer._periodic_callback = self._take_break_if_needed
+        # Optional window pinning: type only into this window, never into
+        # whatever happens to have focus.
+        self.guard = None
+        if target_window:
+            self.guard = WindowGuard(
+                target_window,
+                exact=target_window_exact,
+                refocus=focus_guard_enabled,
+            )
+            if focus_guard_enabled:
+                self.typer._focus_check = self.guard.check
         self._progress_file = os.path.join(
             os.path.dirname(os.path.abspath(__file__)),
             'project_typer_progress.json'
@@ -1574,13 +1971,27 @@ class ProjectTyper:
             print(f"  First break in: ~{self.next_break_after / 60.0:.1f} minutes")
         print(f"{'═'*60}")
 
+        # Resolve the target window before anything is typed. Failing here is
+        # much better than discovering it after 300 lines went to Notepad.
+        if self.guard is not None:
+            if not self.guard.resolve():
+                print("\n  Aborting — no usable target window.")
+                raise SystemExit(1)
+            if not self.guard.ensure_focus():
+                print("\n  Aborting — could not focus the target window.")
+                raise SystemExit(1)
+
         # Create folder structure and disable VS Code's auto-editing features
         self._create_target_structure(files)
         self._write_vscode_settings()
 
         # Countdown before starting
-        print(f"\n  ⚠ Make sure VS Code is open with the target folder!")
-        print(f"  ⚠ Do NOT touch keyboard/mouse while typing is in progress!")
+        if self.guard is not None:
+            print(f"\n  ⚠ Typing is locked to: {_safe_text(self.guard.title)}")
+            print(f"  ⚠ Do NOT switch windows while typing is in progress!")
+        else:
+            print(f"\n  ⚠ Make sure VS Code is open with the target folder!")
+            print(f"  ⚠ Do NOT touch keyboard/mouse while typing is in progress!")
         print(f"\n  Starting in 8 seconds... (Ctrl+C to abort)\n")
         for i in range(8, 0, -1):
             print(f"  {i}...", end='\r')
@@ -1638,6 +2049,14 @@ class ProjectTyper:
             # Small extra wait for VS Code to fully load
             time.sleep(random.uniform(0.5, 1.5))
 
+            # Re-assert focus: the `code` CLI can open the file in a different
+            # window than the one we locked onto.
+            if self.guard is not None and not self.guard.ensure_focus():
+                print("  [FOCUS] Aborting run to avoid typing into the wrong "
+                      "window.")
+                self._save_progress(idx - 1, total, rel_path)
+                break
+
             # Clear stale/partial content so a resumed run cannot duplicate it
             if had_existing_content:
                 print("  Clearing existing content...")
@@ -1664,7 +2083,10 @@ class ProjectTyper:
                 # Save progress
                 self._save_progress(idx, total, rel_path)
             else:
-                print(f"  ✗ Interrupted at file #{idx}")
+                if self.typer._stop_event.is_set():
+                    print(f"  ✗ Interrupted at file #{idx}")
+                else:
+                    print(f"  ✗ Aborted at file #{idx} (target window lost focus)")
                 self._save_progress(idx - 1, total, rel_path)
                 break
 
@@ -1679,6 +2101,8 @@ class ProjectTyper:
         print(f"\n{'═'*60}")
         print(f"  PROJECT TYPER — COMPLETE")
         print(f"  Total characters typed: {self.typer.chars_typed}")
+        if self.guard is not None:
+            print(f"  Target window: {self.guard.summary()}")
         print(f"{'═'*60}\n")
 
 
@@ -1706,6 +2130,9 @@ Examples:
 
   # Confirm each file before typing
   python project_typer.py --source "C:\\project" --target "C:\\output" --confirm
+
+  # Lock typing to one window — abort instead of typing into the wrong app
+  python project_typer.py --source "C:\\project" --target "C:\\output" --target-window "Visual Studio Code"
         """
     )
 
@@ -1738,12 +2165,28 @@ Examples:
                         help='Break sleep duration range in minutes [default: 3,4]')
     parser.add_argument('--no-breaks', action='store_true',
                         help='Disable automatic 30-60 min rest breaks')
+    parser.add_argument('--target-window', type=str, default=None,
+                        metavar='TITLE',
+                        help='Only type into the window whose title contains '
+                             'TITLE (case-insensitive). Aborts instead of typing '
+                             'into the wrong window. e.g. --target-window "Visual '
+                             'Studio Code"')
+    parser.add_argument('--target-window-exact', action='store_true',
+                        help='Require an exact title match instead of a substring')
+    parser.add_argument('--no-focus-guard', action='store_true',
+                        help='With --target-window: resolve the window but do not '
+                             're-focus it or abort when focus is lost')
 
     args = parser.parse_args()
 
     # Validate paths
     if not os.path.isdir(args.source):
         print(f"Error: Source folder not found: {args.source}")
+        sys.exit(1)
+
+    if (args.target_window_exact or args.no_focus_guard) and not args.target_window:
+        print("Error: --target-window-exact and --no-focus-guard require "
+              "--target-window")
         sys.exit(1)
 
     # Optional target speed in words per minute (~5 chars per word)
@@ -1830,6 +2273,22 @@ Examples:
         print(f"  {marker} [{i:3d}] {f['relative_path']:<50} {size_str}B")
     print("─" * 70)
 
+    # Validate --target-window up front, including for a dry run, so a typo in
+    # the title is caught before any typing starts.
+    if args.target_window:
+        matches = find_windows(args.target_window,
+                               exact=args.target_window_exact)
+        print()
+        if not matches:
+            print(f"Target window: NO MATCH for {args.target_window!r}")
+            print("Visible windows right now:")
+            for w in _list_windows()[:15]:
+                print(f"  - {_safe_text(w['title'])}")
+        else:
+            print(f"Target window match ({len(matches)}):")
+            for w in matches:
+                print(f"  - {_safe_text(w['title'])}  (pid {w['pid']})")
+
     if args.dry_run:
         print("\n[Dry run complete — no files were typed]")
         sys.exit(0)
@@ -1866,6 +2325,9 @@ Examples:
         break_interval=b_int,
         break_duration=b_dur,
         enable_breaks=not args.no_breaks,
+        target_window=args.target_window,
+        target_window_exact=args.target_window_exact,
+        focus_guard_enabled=not args.no_focus_guard,
     )
 
     # Optional: personalise the profile from a real keystroke recording

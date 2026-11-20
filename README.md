@@ -24,7 +24,7 @@ python human_typer.py paragraph.txt
 
 # 4. Run — type a whole project into VS Code (dry run first)
 $env:PYTHONIOENCODING="utf-8"
-python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --dry-run
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --target-window "Visual Studio Code" --dry-run
 
 # 5. Run — record + analyze real typing to see the verdict
 python typing_detector.py monitor 30
@@ -117,6 +117,9 @@ python project_typer.py --source "C:\myproject" --target "C:\myproject_typed"
 | `--break-interval "30,60"` | Minutes of typing before an idle rest break (random within range) | `30,60` |
 | `--break-duration "3,4"` | Minutes to idle during each rest break (random within range) | `3,4` |
 | `--no-breaks` | Disable automatic rest breaks | off |
+| `--target-window TITLE` | Type **only** into the window whose title contains `TITLE` (case-insensitive). Aborts instead of typing into the wrong window | off |
+| `--target-window-exact` | Require an exact title match instead of a substring | off |
+| `--no-focus-guard` | With `--target-window`: resolve + elevation-check the window, but don't re-focus it or abort when focus is lost | off |
 
 #### Examples
 
@@ -138,7 +141,41 @@ python project_typer.py --source "C:\myproject" --target "C:\output" --wpm 75
 
 # Personalise rhythm/typos from a real recorded session
 python project_typer.py --source "C:\myproject" --target "C:\output" --calibrate typing_recording.json
+
+# Lock typing to one window — aborts rather than typing into another app
+python project_typer.py --source "C:\myproject" --target "C:\output" --target-window "Visual Studio Code"
 ```
+
+---
+
+### 2b. Window targeting — `--target-window`
+
+Without this flag the typer is **blind**: `SendInput` goes to whatever window currently has
+focus. A notification, an alt-tab, or a slow VS Code load is enough to send hundreds of lines
+into the wrong application. `--target-window` pins the run to one window:
+
+```powershell
+# Check the title matches BEFORE committing to a run (dry run resolves it too)
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --target-window "Visual Studio Code" --dry-run
+
+# Real run, locked to VS Code
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --target-window "Visual Studio Code"
+```
+
+What it does at each stage:
+
+| Stage | Behaviour |
+|-------|-----------|
+| **Startup** | Resolves the title once. No match → prints every visible window title and exits **before typing anything**. Multiple matches → prefers the focused one and lists the rest. |
+| **Elevation check** | If the target runs elevated and this script does not, it **exits immediately** — Windows blocks `SendInput` from a normal process to an elevated window, so every keystroke would silently vanish. |
+| **Before each file** | Re-focuses the target (handles the `code` CLI opening a different window) and confirms focus actually took. |
+| **While typing** | Polls the foreground window every ~20 characters. Focus stolen → re-focus once; if that fails, **abandons the file** instead of typing into the wrong app. |
+| **On exit** | Reports the target and how many refocus events occurred. |
+
+Substring matching is the useful default because the real VS Code title is
+`file.py - project - Visual Studio Code`. Use `--target-window-exact` when you need a precise
+match, and `--no-focus-guard` to keep the startup resolution/elevation check without the
+re-focusing behaviour.
 
 ---
 
@@ -264,6 +301,23 @@ The same applies to mouse events via `LLMHF_INJECTED` (`0x01`), and to the legac
 > statistics, so the detector's own features are trained to look human). The *provenance* flag
 > is the strong layer, and nothing in this codebase can affect it.
 
+### The software ceiling
+
+Where each layer stands, and whether any change to this repository can move it:
+
+| Detection layer | Status | Why |
+|-----------------|--------|-----|
+| 8 statistical features (this repo's detector) | ✅ **Already defeated** | `--calibrate` copies real IKI/dwell/pause/typo stats — that is what it is for |
+| `LLKHF_INJECTED` | ❌ **Impossible in software** | Set by `win32k` from the event's *route*, not stored anywhere a caller can write |
+| Raw Input `hDevice == NULL` | ❌ **Impossible in software** | No device produced the event, so there is no handle to fabricate |
+| Kernel device-stack driver | ⚠️ Not software you can ship | Needs EV cert + MS attestation, must pass Secure Boot + HVCI — which blocks exactly this — and is a rootkit; EDR flags it *at load*, which is the detection |
+| Real USB HID | ⚠️ Hardware | No flag, real `hDevice` — and still leaves device-arrival logs + VID/PID fingerprints |
+
+**The statistical layer is the only one software can touch, and this tool already beats it.**
+Everything above it is a routing or hardware problem, so there is no edit to `project_typer.py`
+that changes the outcome. "Undetectable at every level" is not a reachable engineering target —
+it requires a signed kernel driver or a physical USB device.
+
 ### Which layer catches what
 
 | Layer | What it can see | Catches synthetic input? | Mechanism |
@@ -356,6 +410,8 @@ can see without any hook at all:
 7. Before typing a file that already has content, the script clears the editor (`Ctrl+A`, `Delete`) so a resumed run does not duplicate it.
 8. If `--resume` is omitted, saved progress (`project_typer_progress.json`) is used automatically. Pass `--resume 0` to start over.
 9. Rest breaks are enforced **during long files too**, not only between files: after a random 30-60 minutes the typer goes idle for a random 3-4 minutes (checked at word/newline boundaries). Tune with `--break-interval`, `--break-duration`, or disable with `--no-breaks`.
+10. **Always use `--target-window`** for unattended runs. Without it the typer types into whatever has focus — one notification or alt-tab sends the rest of the file somewhere else. With it, the run aborts rather than misfire.
+11. If `--target-window` exits with an elevation error, the target app is running as Administrator and this script is not. Windows blocks synthetic input across that boundary — run both at the same level.
 
 ---
 
