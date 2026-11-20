@@ -2,6 +2,33 @@
 
 > **Educational / Research Use Only** — OS-level keystroke and mouse simulation for studying human vs automated input detection.
 
+Repository: **https://github.com/rajiv-kumar-1478/loggyScript**
+
+---
+
+## 🏁 Quick Start
+
+```powershell
+# 1. Clone
+git clone https://github.com/rajiv-kumar-1478/loggyScript.git
+cd loggyScript
+
+# 2. Install (only needed for human_typer.py / typing_detector.py)
+pip install pynput
+
+# 3. Run — type a single file into any focused window (5s to click the window)
+python human_typer.py paragraph.txt
+
+# 4. Run — type a whole project into VS Code (dry run first)
+$env:PYTHONIOENCODING="utf-8"
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --dry-run
+
+# 5. Run — record + analyze real typing to see the verdict
+python typing_detector.py monitor 30
+```
+
+Full details, all flags and examples are below.
+
 ---
 
 ## 📁 Files
@@ -54,21 +81,21 @@ python human_typer.py "C:\path\to\your\file.py"
 #### Step 1: Open VS Code with the target folder
 
 ```powershell
-code "C:\Users\rk170\Desktop\unsecureAPI_typed"
+code "C:\myproject_typed"
 ```
 
 #### Step 2: Dry run (preview files without typing)
 
 ```powershell
 $env:PYTHONIOENCODING="utf-8"
-python project_typer.py --source "C:\Users\rk170\Desktop\unsecureAPI project" --target "C:\Users\rk170\Desktop\unsecureAPI_typed" --dry-run
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed" --dry-run
 ```
 
 #### Step 3: Run for real
 
 ```powershell
 $env:PYTHONIOENCODING="utf-8"
-python project_typer.py --source "C:\Users\rk170\Desktop\unsecureAPI project" --target "C:\Users\rk170\Desktop\unsecureAPI_typed"
+python project_typer.py --source "C:\myproject" --target "C:\myproject_typed"
 ```
 
 #### Options
@@ -220,14 +247,72 @@ Application (VS Code)
 | `analysis_report.json` | `typing_detector.py analyze` — full detection report |
 | `project_typer_progress.json` | `project_typer.py` — resume checkpoint |
 
+> `typing_recording.json`, `analysis_report.json` and `project_typer_progress.json` are **local runtime output** — they are committed here as sample data, but you can safely delete them. `project_typer_progress.json` is git-ignored by default.
+
+---
+
+## 📤 Push to GitHub
+
+The remote is already configured in this folder:
+
+```powershell
+git remote -v
+# origin  https://github.com/rajiv-kumar-1478/loggyScript.git (fetch)
+# origin  https://github.com/rajiv-kumar-1478/loggyScript.git (push)
+```
+
+### First-time push
+
+```powershell
+git add .
+git commit -m "docs: add README with run + push instructions"
+git branch -M main
+git push -u origin main
+```
+
+> The GitHub repo was empty, so `main` becomes the default branch. If you prefer `master`, use `git branch -M master` and `git push -u origin master` instead.
+
+### Everyday workflow
+
+```powershell
+git status                 # what changed
+git add <file>             # stage specific files (or `git add .`)
+git commit -m "feat: ..."  # commit with a message
+git push                   # upload to GitHub
+```
+
+### If authentication is requested
+
+GitHub no longer accepts account passwords over HTTPS. Use either:
+
+1. **Personal Access Token (recommended)**
+   - GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → *Generate new token* → scope `repo`
+   - When prompted: username = your GitHub username, password = the token
+   - Cache it once: `git config --global credential.helper manager`
+
+2. **SSH instead of HTTPS**
+
+   ```powershell
+   ssh-keygen -t ed25519 -C "your@email.com"
+   # add ~/.ssh/id_ed25519.pub to GitHub → Settings → SSH and GPG keys
+   git remote set-url origin git@github.com:rajiv-kumar-1478/loggyScript.git
+   git push -u origin main
+   ```
+
+### Common fixes
+
+| Problem | Fix |
+|---------|-----|
+| `remote origin already exists` | `git remote set-url origin https://github.com/rajiv-kumar-1478/loggyScript.git` |
+| `src refspec main does not match any` | Commit first: `git add . && git commit -m "init"` |
+| `Updates were rejected` | `git pull --rebase origin main` then `git push` |
+| `LF will be replaced by CRLF` | Harmless on Windows (line-ending warning) |
+| `__pycache__` / `.pyc` committed by mistake | `git rm -r --cached __pycache__ *.pyc` then commit |
+
+---
+
+## 📄 License
+
+Educational / research use only. No warranty. Use on your own machine and your own accounts.
 
 
-
-
-
-
-
-
-
-
- $env:PYTHONIOENCODING="utf-8"; python "C:\Users\rk170\Desktop\__pycache__\project_typer.py" --source "C:\Users\rk170\Desktop\unsecureAPI project" --target "C:\Users\rk170\Desktop\unsecureAPI_typed"
