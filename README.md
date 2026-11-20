@@ -1,6 +1,9 @@
 # Human-Like Typing Simulator & Detection Suite
 
 > **Educational / Research Use Only** — OS-level keystroke and mouse simulation for studying human vs automated input detection.
+>
+> ⚠️ This tool **does not defeat real detection** — Windows stamps every simulated keystroke as
+> synthetic. See [Detection Limits](#-detection-limits--where-this-gets-caught).
 
 Repository: **https://github.com/rajiv-kumar-1478/loggyScript**
 
@@ -222,6 +225,123 @@ Application (VS Code)
 | Dwell Times | How long keys are held — near-zero = simulated |
 | Burst Uniformity | Fast segments shouldn't be perfectly uniform |
 | Mouse Correlation | No mouse activity = suspicious |
+
+> These 8 features are **statistical only**. They do not inspect the OS's injected-input flag —
+> see [Detection Limits](#-detection-limits--where-this-gets-caught) for what this approach
+> cannot see and how real detectors catch simulated input.
+
+---
+
+## 🕵️ Detection Limits — Where This Gets Caught
+
+**Short answer: yes, this will be caught — but not by a "kernel hook that checks a flag".**
+The realistic answer depends on *which layer* is watching, and the layers catch you for two
+completely different reasons.
+
+### The one thing that cannot be hidden
+
+Every event produced by `SendInput` (both `KEYEVENTF_SCANCODE` and `KEYEVENTF_UNICODE` paths
+used in `project_typer.py`, and every `pynput` call in `human_typer.py`) is stamped as
+**synthetic by the OS itself**. Windows marks injected input and hands that mark to anything
+that asks for it. No amount of timing realism, dwell-time modelling or typo simulation changes
+this bit — it is set by `win32k` before the event ever reaches the application.
+
+A user-mode low-level keyboard hook (`WH_KEYBOARD_LL`) can read it in one line:
+
+```c
+KBDLLHOOKSTRUCT *kb = (KBDLLHOOKSTRUCT *)lParam;
+if (kb->flags & LLKHF_INJECTED) {        /* 0x10 — set on every SendInput event */
+    /* automated input — no timing analysis needed */
+}
+```
+
+The same applies to mouse events via `LLMHF_INJECTED` (`0x01`), and to the legacy
+`GetMessageExtraInfo()` check, which returns an injected signature
+(`0xFF515700`-family) for synthetic messages.
+
+> This is the honest bottom line: **statistical detection is the weak layer, and this tool
+> defeats it on purpose** (`--calibrate` literally copies a real human's IKI/dwell/typo
+> statistics, so the detector's own features are trained to look human). The *provenance* flag
+> is the strong layer, and nothing in this codebase can affect it.
+
+### Which layer catches what
+
+| Layer | What it can see | Catches synthetic input? | Mechanism |
+|-------|-----------------|--------------------------|-----------|
+| **App-level statistics** (this repo's `typing_detector.py`) | Inter-key intervals, dwell, typos | ⚠️ Weak / bypassable | Timing heuristics — beaten by `--calibrate` |
+| **User-mode low-level hook** (`WH_KEYBOARD_LL`) | `KBDLLHOOKSTRUCT.flags` | ✅ **Instant, 100%** | `LLKHF_INJECTED` bit |
+| **`GetMessageExtraInfo()`** | Message extra info | ✅ Instant | Injected signature |
+| **Raw Input** (`WM_INPUT` / `GetRawInputData`) | `RAWKEYBOARD.hDevice` | ✅ Instant — or silently drops input | Injected events arrive with `hDevice == NULL` |
+| **Kernel filter driver on the keyboard stack** (`kbdclass` / `\Device\KeyboardClass0`) | Real hardware IRPs only | ✅ **By absence, not by flag** | Sees *zero* hardware keystrokes while text still appears |
+| **Kernel anti-cheat / EDR** (Vanguard, EAC, BattlEye, CrowdStrike) | Device stack + process behaviour | ✅ Blocks or flags | Correlation + behavioural rules |
+| **Accessibility / UIA text watcher** | The text buffer itself | ✅ Instant | Content changes with no key events at all |
+| **Integrity level (UIPI)** | — | 🚫 Input is **dropped** | Cannot type into elevated windows |
+
+### Why "kernel-level hook" is the *right instinct* but the wrong mechanism
+
+A kernel-mode filter driver attached to the keyboard device stack **never sees `SendInput`
+events at all** — injection happens inside `win32k`'s raw input thread, not through the
+`\Device\KeyboardClass*` device stack. So a driver at that layer cannot check an "injected"
+flag, because the event never arrives.
+
+It catches you the other way around: the driver sees the *genuine hardware* stream (which is
+empty), while the application's text buffer keeps growing. **Real keystrokes: none.
+Characters delivered: thousands.** That mismatch is conclusive, and it is exactly what
+kernel anti-cheat and EDR products correlate.
+
+So:
+
+- **User-mode hook** → catches you by a *flag* on every event.
+- **Kernel driver** → catches you by the *absence* of any hardware events behind the text.
+- **Both catch you.** Only the evidence differs.
+
+The only input that carries no injected flag is input that originates from physical hardware.
+That is a hardware problem, not a software one, and it is out of scope for this project —
+using simulated input to satisfy proctored exams, employment assessments, KYC or account
+verification is fraud regardless of how realistic the keystrokes look.
+
+### What `typing_detector.py` itself does **not** check
+
+Worth stating plainly, since the tool's own verdict can be misleading:
+
+- ❌ **Not** `LLKHF_INJECTED` — the hook is already installed via `pynput`, so the flag is
+  available, but the 8 features are purely statistical and never inspect it.
+- ❌ **Not** `GetMessageExtraInfo()` signatures.
+- ❌ **Not** Raw Input `hDevice` (whether a physical device produced the event).
+- ❌ **Not** UIA/text-buffer correlation.
+- ❌ **No ground truth** — it infers "human vs automated" from timing alone, so a careful slow
+  human can be scored 🟡/🔴 (false positive) and a calibrated simulator scores 🟢 (false
+  negative). Treat the verdict as a *statistical opinion*, not a security control.
+
+### Non-input evidence left behind
+
+Even ignoring input provenance entirely, `project_typer.py` leaves artefacts that a reviewer
+can see without any hook at all:
+
+| Artefact | Why it stands out |
+|----------|-------------------|
+| `.vscode/settings.json` written into the target folder | Direct fingerprint of this script |
+| File `mtime`s clustered within a few minutes | A real project takes days/weeks |
+| VS Code Local History (`%APPDATA%\Code\User\History`) | Hundreds of near-identical saves in rapid succession |
+| Uniform formatting / zero exploratory edits | No debugging churn, no half-written functions |
+| Git author timestamps | All commits inside one session |
+| Per-character undo stack | Typed content produces hundreds of undo steps; pasted content produces one |
+
+### Where it simply fails to work
+
+1. **Elevated windows** — a normal-integrity process cannot `SendInput` into an admin window;
+   the call fails (`ERROR_ACCESS_DENIED`) and nothing is typed.
+2. **UAC prompts / secure desktop / lock screen** — input injection is blocked by design.
+3. **Focus loss** — anything that steals focus mid-run sends the remaining text to the wrong
+   window (or nowhere). This is the most common real-world failure.
+4. **Anti-cheat protected games** — Raw Input-only handling drops synthetic events, or the
+   anti-cheat blocks the process outright.
+5. **EDR / endpoint security** — an unsigned `python.exe` emitting thousands of `SendInput`
+   calls per minute is a textbook behavioural signature and may be quarantined.
+
+> **Summary:** this project is a *detection-research* tool, not a bypass tool. It is useful for
+> studying how statistical detectors behave and where they fail. It does not defeat provenance
+> checks, and it is not intended to be used anywhere input authenticity is being verified.
 
 ---
 
