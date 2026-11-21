@@ -26,7 +26,7 @@ Options:
   --dry-run      List files that would be typed without actually typing
   --resume       Resume from a specific file index (0-based)
   --confirm      Ask for confirmation before typing each file
-  --break-interval  Work minutes before taking a break (min,max) [default: 30,60]
+  --break-interval  Work minutes before taking a break (min,max) [default: 45,60]
   --break-duration  Break sleep minutes (min,max) [default: 3,4]
   --no-breaks       Disable automatic rest breaks
   --target-window   Only type into a window whose title contains this string
@@ -1749,12 +1749,13 @@ class ProjectTyper:
     def __init__(self, source_dir: str, target_dir: str,
                  speed: float = 1.0, open_delay: float = 2.0,
                  confirm_each: bool = False,
-                 break_interval: tuple = (30.0, 60.0),
+                 break_interval: tuple = (45.0, 60.0),
                  break_duration: tuple = (3.0, 4.0),
                  enable_breaks: bool = True,
                  target_window: str = None,
                  target_window_exact: bool = False,
-                 focus_guard_enabled: bool = True):
+                 focus_guard_enabled: bool = True,
+                 stop_minutes: float = None):
         self.source_dir = os.path.abspath(source_dir)
         self.target_dir = os.path.abspath(target_dir)
         self.speed = speed
@@ -1763,11 +1764,12 @@ class ProjectTyper:
         self.break_interval = break_interval
         self.break_duration = break_duration
         self.enable_breaks = enable_breaks
+        self.stop_minutes = stop_minutes
+        self.stop_seconds = float(stop_minutes) * 60.0 if stop_minutes else None
         self.profile = TypingProfile(speed_multiplier=speed)
         self.typer = HumanTyper(self.profile)
-        if self.enable_breaks:
-            # Polled by HumanTyper while typing so long files also pause for rest
-            self.typer._periodic_callback = self._take_break_if_needed
+        # Polled by HumanTyper while typing so time limit and rest breaks trigger gracefully
+        self.typer._periodic_callback = self._periodic_check
         # Optional window pinning: type only into this window, never into
         # whatever happens to have focus.
         self.guard = None
@@ -1787,6 +1789,17 @@ class ProjectTyper:
         self.next_break_after = random.uniform(
             self.break_interval[0] * 60, self.break_interval[1] * 60
         )
+
+    def _is_time_up(self) -> bool:
+        if not self.stop_seconds:
+            return False
+        return (time.time() - self.session_start) >= self.stop_seconds
+
+    def _periodic_check(self) -> bool:
+        if self._is_time_up():
+            self.typer.stop()
+            return True
+        return self._take_break_if_needed()
 
     def _take_break_if_needed(self) -> bool:
         """
@@ -1966,6 +1979,11 @@ class ProjectTyper:
         print(f"  Target: {self.target_dir}")
         print(f"  Files:  {total} (starting from #{resume_from})")
         print(f"  Speed:  {self.speed}x")
+        if self.stop_minutes:
+            stop_dt = datetime.fromtimestamp(self.session_start + self.stop_seconds).strftime('%H:%M:%S')
+            print(f"  Stop limit: {self.stop_minutes:.1f} minutes (will stop at {stop_dt})")
+        else:
+            print(f"  Stop limit: None (runs continuously)")
         if self.enable_breaks:
             print(f"  Breaks: Random {self.break_duration[0]:.0f}-{self.break_duration[1]:.0f}m rest every {self.break_interval[0]:.0f}-{self.break_interval[1]:.0f}m")
             print(f"  First break in: ~{self.next_break_after / 60.0:.1f} minutes")
@@ -1999,8 +2017,18 @@ class ProjectTyper:
         print(f"  {'Starting now!':<30}")
 
         for idx in range(resume_from, total):
-            if self.typer._stop_event.is_set():
-                print(f"\n[Stopped] Progress saved at file #{idx}")
+            if self.typer._stop_event.is_set() or self._is_time_up():
+                if self._is_time_up():
+                    elapsed_m = (time.time() - self.session_start) / 60.0
+                    print(f"\n\n{'═'*60}")
+                    print(f"  TIME LIMIT REACHED (--stop {self.stop_minutes:.1f} min)")
+                    print(f"  Session ran for {elapsed_m:.1f} minutes.")
+                    print(f"  Progress cleanly saved at file #{idx + 1}")
+                    print(f"  Run the command again anytime to auto-resume!")
+                    print(f"{'═'*60}\n")
+                    self._save_progress(idx - 1, total, files[idx]['relative_path'] if idx < total else '')
+                else:
+                    print(f"\n[Stopped] Progress saved at file #{idx}")
                 break
 
             file_info = files[idx]
@@ -2082,12 +2110,33 @@ class ProjectTyper:
 
                 # Save progress
                 self._save_progress(idx, total, rel_path)
+
+                # Check if time limit was reached right as file completed
+                if self._is_time_up():
+                    elapsed_m = (time.time() - self.session_start) / 60.0
+                    print(f"\n\n{'═'*60}")
+                    print(f"  TIME LIMIT REACHED (--stop {self.stop_minutes:.1f} min)")
+                    print(f"  Session ran for {elapsed_m:.1f} minutes.")
+                    print(f"  Completed file #{idx + 1}. Next run starts at #{idx + 2}.")
+                    print(f"  Run the command again anytime to auto-resume!")
+                    print(f"{'═'*60}\n")
+                    break
             else:
-                if self.typer._stop_event.is_set():
+                if self._is_time_up():
+                    elapsed_m = (time.time() - self.session_start) / 60.0
+                    print(f"\n\n{'═'*60}")
+                    print(f"  TIME LIMIT REACHED (--stop {self.stop_minutes:.1f} min)")
+                    print(f"  Session ran for {elapsed_m:.1f} minutes.")
+                    print(f"  Progress cleanly saved at file #{idx + 1}: {rel_path}")
+                    print(f"  Run the command again anytime to auto-resume!")
+                    print(f"{'═'*60}\n")
+                    self._save_progress(idx - 1, total, rel_path)
+                elif self.typer._stop_event.is_set():
                     print(f"  ✗ Interrupted at file #{idx}")
+                    self._save_progress(idx - 1, total, rel_path)
                 else:
                     print(f"  ✗ Aborted at file #{idx} (target window lost focus)")
-                self._save_progress(idx - 1, total, rel_path)
+                    self._save_progress(idx - 1, total, rel_path)
                 break
 
             # Pause between files (like switching mental context)
@@ -2159,12 +2208,16 @@ Examples:
                              'If omitted, saved progress is used automatically')
     parser.add_argument('--confirm', action='store_true',
                         help='Confirm before typing each file')
-    parser.add_argument('--break-interval', type=str, default='30,60',
-                        help='Work duration range in minutes before break [default: 30,60]')
+    parser.add_argument('--break-interval', type=str, default='45,60',
+                        help='Work duration range in minutes before break [default: 45,60]')
     parser.add_argument('--break-duration', type=str, default='3,4',
                         help='Break sleep duration range in minutes [default: 3,4]')
     parser.add_argument('--no-breaks', action='store_true',
-                        help='Disable automatic 30-60 min rest breaks')
+                        help='Disable automatic 45-60 min rest breaks')
+    parser.add_argument('--stop', type=float, default=None,
+                        metavar='MINUTES',
+                        help='Stop the script after working for N minutes (e.g. --stop 30). '
+                             'Saves progress cleanly and exits. (Default: run continuously)')
     parser.add_argument('--target-window', type=str, default=None,
                         metavar='TITLE',
                         help='Only type into the window whose title contains '
@@ -2304,9 +2357,9 @@ Examples:
     try:
         b_int = tuple(float(x.strip()) for x in args.break_interval.split(','))
         if len(b_int) != 2:
-            b_int = (30.0, 60.0)
+            b_int = (45.0, 60.0)
     except Exception:
-        b_int = (30.0, 60.0)
+        b_int = (45.0, 60.0)
 
     try:
         b_dur = tuple(float(x.strip()) for x in args.break_duration.split(','))
@@ -2328,6 +2381,7 @@ Examples:
         target_window=args.target_window,
         target_window_exact=args.target_window_exact,
         focus_guard_enabled=not args.no_focus_guard,
+        stop_minutes=args.stop,
     )
 
     # Optional: personalise the profile from a real keystroke recording

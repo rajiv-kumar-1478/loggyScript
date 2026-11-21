@@ -40,6 +40,7 @@ Full details, all flags and examples are below.
 |------|---------|
 | `human_typer.py` | Type a single text/file with human-like behavior |
 | `project_typer.py` | Type an **entire project folder** into VS Code file-by-file |
+| `excel_typer.py` | Type tabular data (CSV/TSV/JSON/Excel) into **Microsoft Excel** cell-by-cell |
 | `typing_detector.py` | Record keystrokes and analyze if typing is human or automated |
 
 ---
@@ -54,7 +55,7 @@ Full details, all flags and examples are below.
 pip install pynput
 ```
 
-> `project_typer.py` uses **zero external dependencies** — pure `ctypes` for OS-level input.
+> `project_typer.py` and `excel_typer.py` use **zero external dependencies** — pure `ctypes` for OS-level input.
 > `human_typer.py` and `typing_detector.py` require `pynput`.
 
 ---
@@ -114,9 +115,10 @@ python project_typer.py --source "C:\myproject" --target "C:\myproject_typed"
 | `--extensions ".cs,.py"` | Only type files with these extensions | common code files |
 | `--skip-dirs "bin,obj"` | Skip these directory names | `bin,obj,.git,.vs,node_modules` |
 | `--dry-run` | List files without typing anything | off |
-| `--break-interval "30,60"` | Minutes of typing before an idle rest break (random within range) | `30,60` |
+| `--break-interval "45,60"` | Minutes of typing before an idle rest break (random within range) | `45,60` |
 | `--break-duration "3,4"` | Minutes to idle during each rest break (random within range) | `3,4` |
 | `--no-breaks` | Disable automatic rest breaks | off |
+| `--stop 30` | Work for N minutes then cleanly save progress and exit (e.g. 30 min) | off (runs continuously) |
 | `--target-window TITLE` | Type **only** into the window whose title contains `TITLE` (case-insensitive). Aborts instead of typing into the wrong window | off |
 | `--target-window-exact` | Require an exact title match instead of a substring | off |
 | `--no-focus-guard` | With `--target-window`: resolve + elevation-check the window, but don't re-focus it or abort when focus is lost | off |
@@ -138,6 +140,9 @@ python project_typer.py --source "C:\myproject" --target "C:\output" --confirm
 
 # Target ~75 words per minute
 python project_typer.py --source "C:\myproject" --target "C:\output" --wpm 75
+
+# Stop automatically after 30 minutes (saves progress to resume later)
+python project_typer.py --source "C:\myproject" --target "C:\output" --stop 30
 
 # Personalise rhythm/typos from a real recorded session
 python project_typer.py --source "C:\myproject" --target "C:\output" --calibrate typing_recording.json
@@ -179,7 +184,85 @@ re-focusing behaviour.
 
 ---
 
-### 3. Detection System — `typing_detector.py`
+### 3. Spreadsheet Entry — `excel_typer.py`
+
+Types tabular data from a CSV, TSV, JSON, or Excel file cell-by-cell into Microsoft Excel (or LibreOffice Calc / Google Sheets) with authentic human-like biometrics, key dwell times, and cell navigation.
+
+Like `project_typer.py`, it uses **zero external dependencies** (pure `ctypes` OS-level `SendInput`).
+
+#### Key Features:
+- **Full Biometric Humanizer**:
+  - **5-Way Typo Simulation**: Realistic mistakes (substitution, doubling, insertion, omission, transposition) with notice delays and backspacing.
+  - **Formula Burst Typing**: Fast muscle-memory burst typing for Excel formulas (`=SUM(`, `=AVERAGE(`, `=IF(`, `=VLOOKUP(`) and common status words (`TRUE`, `FALSE`, `Pending`, `Delivered`, `Shipped`).
+  - **Cognitive & Distraction Pauses**: Natural thinking hesitations and occasional phone/talking distraction pauses (3.5–8.5s).
+  - **Punctuation Pauses**: Natural cadence slowdown on commas, periods, colons, semicolons, and parentheses.
+  - **Warm-Up & Rhythm Drift**: Sessions start with realistic warm-up curves and subtle speed drift across rows.
+  - **Fatigue Modeling**: Typing speed gradually slows and typo frequency increases over long runs.
+  - **OS-Level Mouse Drift**: Natural Bezier curve mouse micro-movements and sheet glancing via Windows `SendInput`.
+- **Auto-Pause on Window Change**:
+  - If you switch away from Excel (e.g. click command prompt, open browser, Alt-Tab), typing **immediately pauses safely** without losing state or spraying keys.
+  - When you click or switch back to Excel, typing **automatically unpauses and resumes** in 1 second!
+- **Auto-Resume on Command Restart**:
+  - If you close the terminal, abort with `Ctrl+C`, or restart the command (`python excel_typer.py --source ... --destination ...`), the script **automatically detects previous progress** from `excel_typer_progress.json` and resumes from the exact file / row where it stopped.
+  - Pass `--fresh` to force a complete restart from File #1 / Row 1.
+- **Hands-Free Auto-Launch**:
+  - Automatically launches Microsoft Excel on run, brings it to the foreground, selects cell `A1` via `Ctrl+Home`, and starts typing directly.
+- **Universal CSV / Spreadsheet Ingestion**:
+  - RFC 4180 multiline cells, auto delimiter sniffing (`,`, `;`, `\t`, `|`), auto encoding detection (UTF-8, UTF-8-BOM, UTF-16, CP1252, Latin-1).
+- **Excel Grid Navigation**:
+  - `Tab` across columns, `Enter` at row end, and `Alt+Enter` for in-cell line breaks.
+- **Auto-Save & Ergonomic Rest Breaks**:
+  - Auto-saves workbook (`Ctrl+S`) every N rows (`--save-interval 10`).
+  - Automatically selects a random work duration between 45–60 minutes, pauses with a live countdown timer to sleep for 3–4 minutes of human rest, resets fatigue, and automatically resumes typing. Pass `--no-breaks` to disable.
+- **Configurable Stop Time Limit (`--stop <minutes>`)**:
+  - Optional argument: work for N minutes (e.g. `--stop 30` for 30 minutes) and stop automatically.
+  - Automatically saves the workbook / active file, writes exact progress to JSON, and exits cleanly.
+  - When re-run, automatically resumes right where it left off! If `--stop` is omitted, the script runs continuously.
+
+#### Run Examples:
+
+##### A. Folder-to-Folder Batch Mode (All CSVs / Spreadsheets in a Folder):
+```powershell
+# 1. Preview all discovered spreadsheet files and data size (Dry Run)
+python excel_typer.py --source "C:\source_folder" --destination "C:\dest_folder" --dry-run
+
+# 2. Batch replicate entire folder into destination Excel files file-by-file (auto-resumes if restarted)
+python excel_typer.py --source "C:\source_folder" --destination "C:\dest_folder"
+
+# 3. Work for 30 minutes and stop automatically (resumes on next command)
+python excel_typer.py --source "C:\source_folder" --destination "C:\dest_folder" --stop 30
+
+# 4. Force start from File #1 from scratch (ignores saved progress)
+python excel_typer.py --source "C:\source_folder" --destination "C:\dest_folder" --fresh
+
+# 5. Filter specific extensions (e.g. only CSV files) and confirm each file
+python excel_typer.py --source "C:\source_folder" --destination "C:\dest_folder" --extensions .csv --confirm
+```
+
+##### B. Single File Mode:
+```powershell
+# 1. Type source CSV into destination Excel file (auto-creates and opens destination)
+python excel_typer.py --source "C:\path\to\data.csv" --destination "C:\path\to\output.xlsx"
+
+# 2. Type with a 30-minute auto-stop limit
+python excel_typer.py --source "C:\path\to\data.csv" --destination "C:\path\to\output.xlsx" --stop 30
+
+# 3. Force start from Row 1 from scratch (ignores saved progress)
+python excel_typer.py --source "C:\path\to\data.csv" --destination "C:\path\to\output.xlsx" --fresh
+
+# 4. Preview rows, cells, character count, and time estimate (Dry Run)
+python excel_typer.py --source "C:\path\to\data.csv" --destination "C:\path\to\output.xlsx" --dry-run
+
+# 5. Test run with built-in sample inventory data (no file needed)
+python excel_typer.py --sample
+
+# 6. Type source file into focused Excel window with auto-save every 5 rows
+python excel_typer.py --source "C:\path\to\data.csv" --speed 1.5 --save-interval 5
+```
+
+---
+
+### 4. Detection System — `typing_detector.py`
 
 #### Record + Analyze in one step (30 seconds):
 
