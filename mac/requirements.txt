@@ -1,0 +1,6 @@
+# macOS input layer (replaces Windows user32.dll / SendInput)
+pyobjc-framework-Quartz>=9.0
+pyobjc-framework-Cocoa>=9.0
+
+# Optional: read/write .xlsx files directly
+openpyxl>=3.0
